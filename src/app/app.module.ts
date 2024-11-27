@@ -6,7 +6,13 @@ import { AppComponent } from './app.component';
 import { BackgroundLayoutComponent } from '../layout/background-layout/background-layout.component';
 import { HeaderComponent } from '../layout/header/header.component';
 import { FooterComponent } from '../layout/footer/footer.component';
-import { ProductComponent } from '../module/product/product.component';
+import { SidebarComponent } from '../layout/sidebar/sidebar.component';
+import { LoginComponent } from './module/login/login.component';
+import { ProductComponent } from './module/product/product.component';
+import { AddProductComponent } from './module/add-product/add-product.component';
+import { FormsModule } from '@angular/forms';
+import { AddCategoryComponent } from './module/add-category/add-category.component';
+import { CategoryComponent } from './module/category/category.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +21,17 @@ import { ProductComponent } from '../module/product/product.component';
     HeaderComponent,
     FooterComponent,
     ProductComponent,
+    SidebarComponent,
+    LoginComponent,
+    AddProductComponent,
+    AddCategoryComponent,
+    CategoryComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    FormsModule 
   ],
   providers: [
     provideClientHydration()

@@ -1,0 +1,97 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row flex-between-center">
+      <div class="col-md">
+        <h5 class="mb-2 mb-md-0">Add a product</h5>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button">Discard</button>
+        <button class="btn btn-primary" type="submit" form="productForm">Add product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="productForm" (ngSubmit)="addProduct()">
+  <div class="row g-0">
+    <div class="col-lg-8 pe-lg-2">
+      <div class="card mb-3">
+        <div class="card-header bg-body-tertiary">
+          <h6 class="mb-0">Basic information</h6>
+        </div>
+        <div class="card-body">
+          <div class="row gx-2">
+            <div class="col-12 mb-3">
+              <label class="form-label" for="product-id">Id:</label>
+              <input class="form-control" id="product-id" type="text" [(ngModel)]="newProduct.id" name="product-id" />
+            </div>
+            <div class="col-12 mb-3">
+              <label class="form-label" for="product-name">Tên:</label>
+              <input class="form-control" id="product-name" type="text" [(ngModel)]="newProduct.name" name="product-name" />
+            </div>
+            <div class="col-12 mb-3">
+              <label class="form-label" for="sold-quantity">Số lượng đã bán:</label>
+              <input class="form-control" id="sold-quantity" type="text" [(ngModel)]="newProduct.soldQuantity" name="sold-quantity" />
+            </div>
+            <div class="col-12 mb-3">
+              <label class="form-label" for="stock-quantity">Tồn kho:</label>
+              <input class="form-control" id="stock-quantity" type="text" [(ngModel)]="newProduct.stockQuantity" name="stock-quantity" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 ps-lg-2">
+      <div class="sticky-sidebar">
+        <div class="card mb-3">
+          <div class="card-header bg-body-tertiary">
+            <h6 class="mb-0">Type</h6>
+          </div>
+          <div class="card-body">
+            <div class="row gx-2">
+              <div class="col-12 mb-3">
+                <label class="form-label" for="product-category">Select category:</label>
+                <select class="form-select" id="product-category" name="product-category" [(ngModel)]="newProduct.category">
+                  <option value="computerAccessories">Computer & Accessories</option>
+                  <option value="classTrainingWorkshop">Class, Training, or Workshop</option>
+                  <option value="concertPerformance">Concert or Performance</option>
+                  <option value="conference">Conference</option>
+                  <option value="convention">Convention</option>
+                  <option value="dinnerGala">Dinner or Gala</option>
+                  <option value="festivalFair">Festival or Fair</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-header bg-body-tertiary">
+            <h6 class="mb-0">Hạn sử dụng</h6>
+          </div>
+          <div class="card-body">
+            <div class="row gx-2">
+              <div class="col-12 mb-4">
+                <label class="form-label" for="expiry-date">Hạn sử dụng:</label>
+                <input class="form-control border-primary shadow-sm p-2" id="expiry-date" type="date" [(ngModel)]="newProduct.expirationDate" name="expiry-date" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-md">
+        <h5 class="mb-2 mb-md-0">You're almost done!</h5>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button">Discard</button>
+        <button class="btn btn-primary" type="submit" form="productForm" (click)="showProduct()">Add product</button>
+      </div>
+    </div>
+  </div>
+</div>

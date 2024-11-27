@@ -27,19 +27,26 @@
             "outputPath": "dist/product-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              
+              "src/scss/theme.scss",
+              "src/scss/user.scss",
+              "src/vendors/simplebar/simplebar.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/vendors/popper/popper.min.js",
+              "src/vendors/bootstrap/bootstrap.min.js",
+              "src/vendors/anchorjs/anchor.min.js",
+              "src/vendors/is/is.min.js",
+              "src/vendors/swiper/swiper-bundle.min.js",
+              "src/vendors/fontawesome/all.min.js",
+              "src/vendors/lodash/lodash.min.js",
+              "src/vendors/list.js/list.min.js",
+              "/src/assets/js/theme.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -91,19 +98,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }

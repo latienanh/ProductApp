@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
-import { ProductComponent } from '../../module/product/product.component';
 
 @Component({
   selector: 'app-background-layout',
@@ -9,5 +6,11 @@ import { ProductComponent } from '../../module/product/product.component';
   styleUrl: './background-layout.component.scss',  
 })
 export class BackgroundLayoutComponent {
+  currentPage:string  = 'add-product';
 
+  toggleView(namePage: string): void {
+    console.log(namePage)
+  
+    this.currentPage = namePage;
+  }
 }

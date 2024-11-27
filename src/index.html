@@ -1,15 +1,60 @@
-<app-root></app-root>
+<!doctype html>
+<html data-bs-theme="light" lang="en">
 
-      <!-- ===============================================-->
-      <!--    JavaScripts-->
-      <!-- ===============================================-->
-      <script src="../src/vendors/popper/popper.min.js"></script>
-      <script src="../src/vendors/bootstrap/bootstrap.min.js"></script>
-      <script src="../src/vendors/anchorjs/anchor.min.js"></script>
-      <script src="../src/vendors/is/is.min.js"></script>
-      <script src="../src/vendors/swiper/swiper-bundle.min.js"></script>
-      <script src="../src/vendors/fontawesome/all.min.js"></script>
-      <script src="../src/vendors/lodash/lodash.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js" integrity="sha512-lvWiOP+aMKHllm4THsjzNleVuGOh0WGniJ3lgu/nvCbex1LlaQSxySUjAu/LTJw9FhnSL/PVYoQcckg1Q03+fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <script src="../src/vendors/list.js/list.min.js"></script>
-      <script src="assets/js/theme.js"></script>
+<head>
+  <meta charset="utf-8">
+  <title>ProductApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/src/assets/img/favicons/apple-touch-icon.png">
+  <!-- Favicon Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/img/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/src/assets/img/favicons/favicon.ico">
+  <!-- Microsoft Tile Image -->
+  <meta name="msapplication-TileImage" content="/src/assets/img/favicons/mstile-150x150.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- <link rel="manifest" href="/src/assets/img/favicons/manifest.json"> -->
+  <script src="assets/js/config.js"></script>
+  <!-- <script>
+    var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+    if (isRTL) {
+      var linkDefault = document.getElementById('style-default');
+      var userLinkDefault = document.getElementById('user-style-default');
+      if (linkDefault) {
+        linkDefault.setAttribute('disabled', true);
+      }
+      if (userLinkDefault) {
+        userLinkDefault.setAttribute('disabled', true);
+      }
+      document.querySelector('html').setAttribute('dir', 'rtl');
+    } else {
+      var linkRTL = document.getElementById('style-rtl');
+      var userLinkRTL = document.getElementById('user-style-rtl');
+      if (linkRTL) {
+        linkRTL.setAttribute('disabled', true);
+      }
+      if (userLinkRTL) {
+        userLinkRTL.setAttribute('disabled', true);
+      }
+    }
+  </script> -->
+  
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>
