@@ -37,8 +37,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/theme.scss",
-              "src/scss/user.scss"
+              
             ],
             "scripts": [],
             "server": "src/main.server.ts",
