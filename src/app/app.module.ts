@@ -30,7 +30,6 @@ import { UpdateCategoryComponent } from './module/update-category/update-categor
     CategoryComponent,
     UpdateProductComponent,
     UpdateCategoryComponent,
-    
   ],
   imports: [
     BrowserModule,
