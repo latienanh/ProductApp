@@ -20,7 +20,9 @@ export class CategoryService {
   addCategory(category: Category): void {
     this.categories.push(category);
   }
-
+  getCategoryById(id: number): Category | undefined {
+    return this.categories.find(category => category.id === id);
+  }
   updateCategory(updatedCategory: Category): void {
     const index = this.categories.findIndex(category => category.id === updatedCategory.id);
     if (index !== -1) {

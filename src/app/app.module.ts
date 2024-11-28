@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AddCategoryComponent } from './module/add-category/add-category.component';
 import { CategoryComponent } from './module/category/category.component';
 import { UpdateProductComponent } from './module/update-product/update-product.component';
+import { UpdateCategoryComponent } from './module/update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UpdateProductComponent } from './module/update-product/update-product.c
     AddCategoryComponent,
     CategoryComponent,
     UpdateProductComponent,
+    UpdateCategoryComponent,
     
   ],
   imports: [

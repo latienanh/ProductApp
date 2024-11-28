@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class BackgroundLayoutComponent {
   currentPage: string = 'product';
   selectedProductId: number = 0;
+  selectedCategoryId:number =0;
 
   toggleView(pageName: string): void {
     console.log(pageName);
@@ -17,5 +18,9 @@ export class BackgroundLayoutComponent {
   setSelectedProductId(id: number): void {
     console.log(id);
     this.selectedProductId = id;
+  }
+  setSelectedCategoryId(id: number): void {
+    console.log(id);
+    this.selectedCategoryId = id;
   }
 }

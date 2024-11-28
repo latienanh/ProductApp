@@ -88,7 +88,7 @@
                 </th>
                 <th class="text-800 sort align-middle ps-2" data-sort="client">Mã</th>
                 <th class="text-800 sort align-middle" data-sort="subject" style="min-width:15.625rem">Tên</th>
-          
+                <th class="text-800 sort align-middle" data-sort="subject" style="min-width:15.625rem">Hành động</th>
               </tr>
             </thead>
             <tbody *ngFor="let category of categories" class="list" id="table-ticket-body">
@@ -101,6 +101,10 @@
                   {{category.id}}
                 </td>
                 <td class="align-middle subject py-2 pe-4"> {{category.name}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary"(click)="showUpdateCategory(category.id)">Sửa</button>
+                  <button type="button" class="btn btn-danger" (click)="removeCategory(category.id)">Xóa</button>
+              </td>
               </tr>
             </tbody>
           </table>

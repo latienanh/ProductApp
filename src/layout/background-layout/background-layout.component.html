@@ -21,16 +21,17 @@
       <app-product *ngIf="currentPage == 'product'" (toggleView)="toggleView($event) " (setSelectedProductId)="setSelectedProductId($event)">
 
       </app-product>
-      <app-add-product *ngIf="currentPage == 'add-product'" (toggleView)="toggleView($event)">
+      <app-add-product *ngIf="currentPage == 'add-product'" (toggleView)="toggleView($event) " >
 
       </app-add-product>
-      <app-category *ngIf="currentPage == 'category'" (toggleView)="toggleView($event)">
+      <app-category *ngIf="currentPage == 'category'" (toggleView)="toggleView($event)" (setSelectedCategoryId)="setSelectedCategoryId($event)">
 
       </app-category>
       <app-add-category *ngIf="currentPage == 'add-category'" (toggleView)="toggleView($event)">
 
       </app-add-category>
       <app-update-product *ngIf="currentPage == 'update-product' " [Id]="selectedProductId" (toggleView)="toggleView($event) "></app-update-product>
+      <app-update-category *ngIf="currentPage == 'update-category' " [Id]="selectedCategoryId" (toggleView)="toggleView($event)"></app-update-category>
       <app-footer></app-footer>
     </div>
     <div class="modal fade" id="authentication-modal" tabindex="-1" role="dialog"
