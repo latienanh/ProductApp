@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Category } from '../../Dto/Category';
-import { CategoryService } from '../../service/category.service';
+import { Category } from '../../models/category';
+import { CategoryService } from '../../services/category.service';
+
 
 @Component({
   selector: 'app-add-category',

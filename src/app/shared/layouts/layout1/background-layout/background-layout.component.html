@@ -3,14 +3,14 @@
 <!-- ===============================================-->
 <main class="main" id="top">
   <div class="container" data-layout="container">
-    <script>
+    <!-- <script>
       var isFluid = JSON.parse(localStorage.getItem('isFluid'));
       if (isFluid) {
         var container = document.querySelector('[data-layout]');
         container.classList.remove('container');
         container.classList.add('container-fluid');
       }
-    </script>
+    </script> -->
     <nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
       <app-sidebar (toggleView)="toggleView($event)" ngSkipHydration></app-sidebar>
     </nav>
@@ -252,18 +252,3 @@
       class="text-uppercase text-primary fw-bold bg-primary-subtle py-2 pe-2 ps-1 rounded-end">customize</small>
   </div>
 </a>
-<!-- ===============================================-->
-<!--    JavaScripts-->
-<!-- ===============================================-->
-<script src="../../vendors/popper/popper.min.js"></script>
-<script src="../../vendors/bootstrap/bootstrap.min.js"></script>
-<script src="../../vendors/anchorjs/anchor.min.js"></script>
-<script src="../../vendors/is/is.min.js"></script>
-<script src="../../vendors/swiper/swiper-bundle.min.js"></script>
-<script src="../../vendors/fontawesome/all.min.js"></script>
-<script src="../../vendors/lodash/lodash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js"
-  integrity="sha512-lvWiOP+aMKHllm4THsjzNleVuGOh0WGniJ3lgu/nvCbex1LlaQSxySUjAu/LTJw9FhnSL/PVYoQcckg1Q03+fQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="../../vendors/list.js/list.min.js"></script>
-<script src="/src/assets/js/theme.js"></script>

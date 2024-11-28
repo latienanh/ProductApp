@@ -4,6 +4,8 @@ import { BackgroundLayoutComponent } from './background-layout/background-layout
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProductModule } from '../../../features/product/product.module';
+import { CategoryModule } from '../../../features/category/category.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
+    
   ],
-  imports: [CommonModule],
+  imports: [CommonModule,
+    ProductModule,
+    CategoryModule],
+  exports:[BackgroundLayoutComponent,HeaderComponent,FooterComponent,SidebarComponent]
 })
 export class Layout1Module {}

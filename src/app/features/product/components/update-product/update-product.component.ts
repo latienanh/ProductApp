@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../Dto/Product';
-import { ProductService } from '../../service/product.service';
-import { Category } from '../../Dto/Category';
-import { CategoryService } from '../../service/category.service';
+import { Product } from '../../models/product';
+import { Category } from '../../../category/models/category';
+import { ProductService } from '../../services/product.service';
+import { CategoryService } from '../../../category/services/category.service';
+
 
 @Component({
   selector: 'app-update-product',
