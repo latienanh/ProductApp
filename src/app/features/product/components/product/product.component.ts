@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
+import { CategoryService } from '../../../category/services/category.service';
+import { Category } from '../../../category/models/category';
 
 
 @Component({
@@ -13,11 +15,14 @@ export class ProductComponent implements OnInit {
   @Output() toggleView = new EventEmitter<string>();
   @Output() setSelectedProductId = new EventEmitter<number>();
   products: Product[] = [];
-  constructor(private productService:ProductService){
+  categories: Category[] =[];
+  selectedCategory: number | null = null;
+  constructor(private productService:ProductService,private categoryService:CategoryService){
       
   }
   ngOnInit(): void {
-    this.products = this.productService.getProducts()
+    this.products = this.productService.getProducts();
+    this.categories = this.categoryService.getCategories();
   }
   removeProduct(id:number){
     console.log("vao de xoa",id)
@@ -31,5 +36,8 @@ export class ProductComponent implements OnInit {
     console.log("vao update",id)
     this.setSelectedProductId.emit(id);
     this.toggleView.emit('update-product');
+  }
+  filterProduct(){
+    console.log(this.selectedCategory)
   }
 }
