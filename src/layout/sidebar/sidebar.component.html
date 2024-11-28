@@ -153,20 +153,40 @@
               </a>
               <!-- more inner pages-->
               <ul class="nav collapse show" id="product">
-                <li class="nav-item"><a class="nav-link" href="../../../app/e-commerce/product/product-list.html">
+                <li class="nav-item"><a class="nav-link" (click)="showProduct()">
                     <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product list</span>
                     </div>
                   </a>
                   <!-- more inner pages-->
                 </li>
-                <li class="nav-item"><a class="nav-link active" href="../../../app/e-commerce/product/product-grid.html">
+                <!-- <li class="nav-item"><a class="nav-link active" href="../../../app/e-commerce/product/product-grid.html">
                     <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product grid</span>
+                    </div>
+                  </a>
+                
+                </li> -->
+                <li class="nav-item"><a class="nav-link" (click)="showAddProduct()">
+                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Product</span>
                     </div>
                   </a>
                   <!-- more inner pages-->
                 </li>
-                <li class="nav-item"><a class="nav-link" href="../../../app/e-commerce/product/product-details.html">
-                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product details</span>
+              </ul>
+            </li>
+              <li class="nav-item"><a class="nav-link dropdown-indicator" href="#category" data-bs-toggle="collapse" aria-expanded="true" aria-controls="e-commerce">
+                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category</span>
+                </div>
+              </a>
+              <!-- more inner pages-->
+              <ul class="nav collapse show" id="category">
+                <li class="nav-item"><a class="nav-link" (click)="showCategory()">
+                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category list</span>
+                    </div>
+                  </a>
+                  <!-- more inner pages-->
+                </li>
+                <li class="nav-item"><a class="nav-link" (click)="showAddCategory()">
+                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Category</span>
                     </div>
                   </a>
                   <!-- more inner pages-->

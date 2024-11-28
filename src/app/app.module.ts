@@ -13,6 +13,7 @@ import { AddProductComponent } from './module/add-product/add-product.component'
 import { FormsModule } from '@angular/forms';
 import { AddCategoryComponent } from './module/add-category/add-category.component';
 import { CategoryComponent } from './module/category/category.component';
+import { UpdateProductComponent } from './module/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CategoryComponent } from './module/category/category.component';
     AddProductComponent,
     AddCategoryComponent,
     CategoryComponent,
+    UpdateProductComponent,
     
   ],
   imports: [

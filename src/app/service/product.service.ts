@@ -21,7 +21,9 @@ export class ProductService {
   addProduct(product: Product): void {
     this.products.push(product);
   }
-
+  getProductById(id: number): Product | undefined {
+    return this.products.find(product => product.id === id);
+  }
   updateProduct(updatedProduct: Product): void {
     const index = this.products.findIndex(product => product.id === updatedProduct.id);
     if (index !== -1) {

@@ -92,6 +92,7 @@
               <th class="text-800 sort align-middle" data-sort="priority">Số lượng tồn</th>
               <th class="text-800 sort align-middle text-end" data-sort="agent">Hạn sử dụng</th>
               <th class="text-800 sort align-middle text-end" data-sort="agent">Nhóm sản phẩm</th>
+              <th class="text-800 sort align-middle text-end" data-sort="agent">Hành động</th>
             </tr>
           </thead>
           <tbody *ngFor="let product of products" class="list" id="table-ticket-body">
@@ -114,6 +115,10 @@
               <td>
                 <small class="badge rounded badge-subtle-success false"> {{product.category}}</small>
               </td>
+              <td>
+                <button type="button" class="btn btn-primary"(click)="showUpdateProduct(product.id)">Sửa</button>
+                <button type="button" class="btn btn-danger" (click)="removeProduct(product.id)">Xóa</button>
+            </td>
             </tr>
           </tbody>
         </table>

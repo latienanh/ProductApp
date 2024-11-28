@@ -14,9 +14,11 @@ export class AddCategoryComponent {
   constructor(private categoryService: CategoryService) {}
 
   addCategory(): void {
+  
     this.newCategory.id = this.categoryService.getCategories().length + 1;
     this.categoryService.addCategory(this.newCategory);
     this.newCategory = { id: 0, name: '' };
+    this.toggleView.emit('category')
   }
   showCategory():void{
     this.toggleView.emit('category')

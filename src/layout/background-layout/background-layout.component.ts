@@ -6,11 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './background-layout.component.scss',  
 })
 export class BackgroundLayoutComponent {
-  currentPage:string  = 'add-product';
+  currentPage: string = 'product';
+  selectedProductId: number = 0;
 
-  toggleView(namePage: string): void {
-    console.log(namePage)
-  
-    this.currentPage = namePage;
+  toggleView(pageName: string): void {
+    console.log(pageName);
+    this.currentPage = pageName;
+  }
+
+  setSelectedProductId(id: number): void {
+    console.log(id);
+    this.selectedProductId = id;
   }
 }

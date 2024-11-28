@@ -51,14 +51,9 @@
             <div class="row gx-2">
               <div class="col-12 mb-3">
                 <label class="form-label" for="product-category">Select category:</label>
-                <select class="form-select" id="product-category" name="product-category" [(ngModel)]="newProduct.category">
-                  <option value="computerAccessories">Computer & Accessories</option>
-                  <option value="classTrainingWorkshop">Class, Training, or Workshop</option>
-                  <option value="concertPerformance">Concert or Performance</option>
-                  <option value="conference">Conference</option>
-                  <option value="convention">Convention</option>
-                  <option value="dinnerGala">Dinner or Gala</option>
-                  <option value="festivalFair">Festival or Fair</option>
+                <select class="form-select" id="product-category" name="product-category" [(ngModel)]="newProduct.category" >
+                  <option *ngFor="let category of categories"  value={{category.name}}>{{category.name}}</option>
+                 
                 </select>
               </div>
             </div>
@@ -90,7 +85,8 @@
       </div>
       <div class="col-auto">
         <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button">Discard</button>
-        <button class="btn btn-primary" type="submit" form="productForm" (click)="showProduct()">Add product</button>
+        <!-- (click)="showProduct()" -->
+        <button class="btn btn-primary" type="submit" form="productForm" >Add product</button>
       </div>
     </div>
   </div>
