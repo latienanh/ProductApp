@@ -4,10 +4,6 @@
         <div class="col-md">
           <h5 class="mb-2 mb-md-0">update a product</h5>
         </div>
-        <div class="col-auto">
-          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button">Discard</button>
-          <button class="btn btn-primary" type="submit" form="productForm">update product</button>
-        </div>
       </div>
     </div>
   </div>
@@ -83,8 +79,7 @@
           <h5 class="mb-2 mb-md-0">You're almost done!</h5>
         </div>
         <div class="col-auto">
-          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button">Discard</button>
-          <!-- (click)="showProduct()" -->
+          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" role="button" (click)="discardUpdateProduct()">Discard</button>
           <button class="btn btn-primary" type="submit" form="productForm" >update product</button>
         </div>
       </div>

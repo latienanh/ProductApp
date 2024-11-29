@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-category',
@@ -8,19 +9,20 @@ import { CategoryService } from '../../services/category.service';
   styleUrl: './update-category.component.scss'
 })
 export class UpdateCategoryComponent {
-  @Input() Id:any; 
-  @Output() toggleView = new EventEmitter<string>();
-
+  categoryId :number =0 ;
   newCategory: Category = { id: 0, name: '' };
 
-  constructor(private categoryService:CategoryService) {
+  constructor(private categoryService:CategoryService,
+      private route:ActivatedRoute,
+      private router:Router
+  ) {
     
   }
-
   ngOnInit() {
-    console.log("ham tao",this.Id)
-    if (this.Id) {
-      this.loadCategory(this.Id);
+    this.categoryId = parseInt(this.route.snapshot.paramMap.get('id')!,10);
+    console.log('Product ID:', this.categoryId);
+    if (this.categoryId) {
+      this.loadCategory(this.categoryId);
     }
   }
   loadCategory(id: number): void {
@@ -35,6 +37,9 @@ export class UpdateCategoryComponent {
     // Cập nhật sản phẩm
     this.categoryService.updateCategory(this.newCategory);
     this.newCategory = { id: 0, name: '' };
-    this.toggleView.emit('category');
+    this.router.navigate(["../.."],{relativeTo:this.route})
+  }
+  discardUpdateCategory(): void {
+    this.router.navigate(["../.."],{relativeTo:this.route})
   }
 }

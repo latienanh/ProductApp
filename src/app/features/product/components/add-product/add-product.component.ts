@@ -3,6 +3,8 @@ import { Product } from '../../models/product';
 import { Category } from '../../../category/models/category';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../../category/services/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-add-product',
@@ -10,13 +12,10 @@ import { CategoryService } from '../../../category/services/category.service';
   styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent {
-
-  
-  @Output() toggleView = new EventEmitter<string>();
   newProduct: Product = { id: 0, name: '', code: '', soldQuantity: 0, stockQuantity: 0, expirationDate: '', category: '' };
   categories : Category[] = [];
   constructor(private productService: ProductService,
-    private categoryService:CategoryService) {
+    private categoryService:CategoryService,private router:Router,private route:ActivatedRoute) {
       this.categories = categoryService.getCategories();
     }
 
@@ -24,9 +23,10 @@ export class AddProductComponent {
     this.newProduct.id = this.productService.getProducts().length + 1;
     this.productService.addProduct(this.newProduct);
     this.newProduct = { id: 0, name: '', code: '', soldQuantity: 0, stockQuantity: 0, expirationDate: '', category: '' };
-    this.toggleView.emit('product')
+    this.router.navigate([".."],{relativeTo:this.route})
   }
-  // showProduct():void{
-  //   this.toggleView.emit('product')
-  // }
+  discardAddCategory():void{
+    this.router.navigate([".."],{relativeTo:this.route})
+  }
+
 }
