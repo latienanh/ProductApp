@@ -164,16 +164,19 @@
         </div>
         <div class="card-body">
           <form id="FilterForm" (ngSubmit)="filterProduct()">
-            <div class="mb-2 mt-n2"><label class="mb-1">Category</label>
-              <select class="form-select form-select-sm" [(ngModel)]="selectedCategory"  >
-                <option *ngFor="let category of categories" value={{category.id}}>{{category.name}}</option>
-             
+            <div class="mb-2 mt-n2">
+              <label class="mb-1">Category</label>
+              <select class="form-select form-select-sm" [(ngModel)]="selectedCategory" name="category">
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
               </select>
             </div>
-        
           </form>
+       
+          
         </div>
-        <div class="card-footer border-top border-200 py-x1"><button class="btn btn-primary w-100" type="submit" form="FilterForm">Filter</button></div>
+        <div class="card-footer border-top border-200 py-x1">
+          <button class="btn btn-primary w-100" type="submit" form="FilterForm">Filter</button>
+        </div>
       </div>
     </div>
   </div>

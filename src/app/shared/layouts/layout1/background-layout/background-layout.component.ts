@@ -1,34 +1,45 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-background-layout',
   templateUrl: './background-layout.component.html',
-  styleUrl: './background-layout.component.scss',  
+  styleUrl: './background-layout.component.scss',
 })
-export class BackgroundLayoutComponent implements OnInit , AfterViewInit {
- 
+export class BackgroundLayoutComponent implements OnInit, AfterViewInit {
   isFluid: boolean = false;
 
   currentPage: string = 'product';
   selectedProductId: number = 0;
-  selectedCategoryId:number =0;
+  selectedCategoryId: number = 0;
 
   ngOnInit(): void {
-    const savedIsFluid = JSON.parse(localStorage.getItem('isFluid') || 'false');
-    this.isFluid = savedIsFluid;
+    if (typeof window !== 'undefined') {
+      // Chạy trên trình duyệt
+      const savedIsFluid = JSON.parse(
+        localStorage.getItem('isFluid') || 'false'
+      );
+      this.isFluid = savedIsFluid;
+    }
   }
- ngAfterViewInit(): void {
-    // Cập nhật lại các lớp CSS cho phần tử container
-    const container = document.querySelector('[data-layout]');
-    if (container) {
-      if (this.isFluid) {
-        container.classList.remove('container');
-        container.classList.add('container-fluid');
-      } else {
-        container.classList.remove('container-fluid');
-        container.classList.add('container');
+  ngAfterViewInit(): void {
+    if (typeof document !== 'undefined') {
+      // Cập nhật lại các lớp CSS cho phần tử container
+      const container = document.querySelector('[data-layout]');
+      if (container) {
+        if (this.isFluid) {
+          container.classList.remove('container');
+          container.classList.add('container-fluid');
+        } else {
+          container.classList.remove('container-fluid');
+          container.classList.add('container');
+        }
       }
-  }
+    }
   }
 
   toggleView(pageName: string): void {
