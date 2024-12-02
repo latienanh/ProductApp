@@ -5,6 +5,7 @@ import { AdministrativeUnitsRoutingModule } from './administrative-units-routing
 import { WardComponent } from './component/ward/ward.component';
 import { DistrictComponent } from './component/district/district.component';
 import { ProvinceComponent } from './component/province/province.component';
+import { AdministrativeUnitsService } from './services/administrative-units.service';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ProvinceComponent } from './component/province/province.component';
     WardComponent,
     DistrictComponent,
     ProvinceComponent
-  ]
+  ],
+  providers:[AdministrativeUnitsService]
 })
 export class AdministrativeUnitsModule { }

@@ -15,6 +15,6 @@ import { ProductService } from './services/product.service';
   ],
   imports: [CommonModule, ProductRoutingModule,FormsModule],
   providers:[ProductService],
-  exports:[ProductComponent, AddProductComponent, UpdateProductComponent]
+  // exports:[ProductComponent, AddProductComponent, UpdateProductComponent]
 })
 export class ProductModule {}

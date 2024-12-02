@@ -13,5 +13,9 @@ export const BACKEND_LAYOUT: Routes = [
     {
         path: 'user',
         loadChildren: () => import('../../features/user/user.module').then(m => m.UserModule)
+    },
+    {
+        path:'administrative-units',
+        loadChildren:()=>import('../../features/administrative-units/administrative-units.module').then(m=>m.AdministrativeUnitsModule)
     }
 ]

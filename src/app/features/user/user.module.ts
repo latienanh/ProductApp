@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     UserRoutingModule,
     FormsModule
   ],
-  exports:[ProfileComponent],
+  // exports:[ProfileComponent],
   providers:[UserService]
 })
 export class UserModule { }

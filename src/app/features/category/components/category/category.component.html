@@ -59,7 +59,7 @@
                 </select><button class="btn btn-falcon-default btn-sm ms-2" type="button">Apply</button></div>
             </div>
             <div class="d-flex align-items-center" id="table-ticket-replace-element">
-            <button class="btn btn-falcon-default btn-sm mx-2" type="button"  (click)="showAddCategory()"><span class="fas fa-plus"
+            <button class="btn btn-falcon-default btn-sm mx-2" type="button" [routerLink]="['add']"><span class="fas fa-plus"
                   data-fa-transform="shrink-3"></span><span
                   class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></button>
               <div class="dropdown font-sans-serif ms-2"><button
@@ -102,7 +102,7 @@
                 </td>
                 <td class="align-middle subject py-2 pe-4"> {{category.name}}</td>
                 <td>
-                  <button type="button" class="btn btn-primary"(click)="showUpdateCategory(category.id)">Sửa</button>
+                  <button type="button" class="btn btn-primary" [routerLink]="['update', category.id]">Sửa</button>
                   <button type="button" class="btn btn-danger" (click)="removeCategory(category.id)">Xóa</button>
               </td>
               </tr>

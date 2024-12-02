@@ -8,8 +8,8 @@ export const loginRedirectGuard: CanActivateFn = () => {
 
   if (authService.isLoggedIn()) {
     router.navigate(['/backend/product']);
-    return true;  
-  } else {
     return false;  
+  } else {
+    return true;  
   }
 };

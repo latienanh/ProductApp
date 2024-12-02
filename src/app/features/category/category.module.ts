@@ -16,6 +16,6 @@ import { CategoryService } from './services/category.service';
   ],
   imports: [CommonModule, CategoryRoutingModule, FormsModule],
   providers: [CategoryService],
-  exports: [AddCategoryComponent, CategoryComponent, UpdateCategoryComponent],
+  // exports: [AddCategoryComponent, CategoryComponent, UpdateCategoryComponent],
 })
 export class CategoryModule {}
