@@ -7,8 +7,9 @@ export const loginRedirectGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   if (authService.isLoggedIn()) {
-    return router.createUrlTree(['/backend/product']);  
-  } else {
+    router.navigate(['/backend/product']);
     return true;  
+  } else {
+    return false;  
   }
 };

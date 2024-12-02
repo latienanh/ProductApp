@@ -29,22 +29,22 @@
           <h5 class="mb-0">Profile Settings</h5>
         </div>
         <div class="card-body bg-light">
-          <form class="row g-3">
+          <form class="row g-3" id="updateUserForm" (ngSubmit)="updateUser()">
             <div class="col-lg-6">
               <label class="form-label" for="name"> Name</label>
-              <input class="form-control" id="name" type="text" />
+              <input class="form-control" id="name" type="text" [(ngModel)]="userUpdate.name" name="name"/>
             </div>
            
             <div class="col-lg-6">
               <label class="form-label" for="email1">Email</label>
-              <input class="form-control" id="email1" type="text"  />
+              <input class="form-control" id="email1" type="text" [(ngModel)]="userUpdate.email" name="email1" />
             </div>
             <div class="col-lg-6">
               <label class="form-label" for="email2">Phone</label>
-              <input class="form-control" id="email2" type="text" />
+              <input class="form-control" id="email2" type="text" [(ngModel)]="userUpdate.phoneNumber" name="email2" />
             </div>
             <div class="col-12 d-flex justify-content-end">
-              <button class="btn btn-primary" type="submit">Update </button>
+              <button class="btn btn-primary" type="submit" form="updateUserForm">Update </button>
             </div>
           </form>
         </div>
