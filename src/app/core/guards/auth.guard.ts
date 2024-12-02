@@ -1,28 +1,16 @@
-// // auth.guard.ts
-// import { Injectable } from '@angular/core';
-// import {
-//   CanActivate,
-//   ActivatedRouteSnapshot,
-//   RouterStateSnapshot,
-//   Router,
-// } from '@angular/router';
-// import { AuthService } from './auth.service'; // Dịch vụ xác thực của bạn
+import { inject } from '@angular/core';
+import { Router, CanActivateFn } from '@angular/router';
+import { AuthService } from '../../features/auth/services/auth.service';
+  // Giả định bạn đã có AuthService để quản lý xác thực
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class AuthGuard implements CanActivate {
-//   constructor(private authService: AuthService, private router: Router) {}
+export const authGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-//   canActivate(
-//     next: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ): boolean {
-//     if (this.authService.isLoggedIn()) {
-//       return true;
-//     } else {
-//       this.router.navigate(['/login']); // Redirect to login page if not authenticated
-//       return false;
-//     }
-//   }
-// }
+  if (authService.isLoggedIn()) {
+    return true;
+  } else {
+    router.navigate(['/auth/login']);  // Điều hướng đến trang đăng nhập nếu không đăng nhập
+    return false;
+  }
+};
