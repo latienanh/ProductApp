@@ -12,7 +12,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-
     FooterComponent,
     HeaderComponent,
     SidebarComponent,

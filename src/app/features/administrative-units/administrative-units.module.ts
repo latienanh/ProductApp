@@ -5,24 +5,36 @@ import { AdministrativeUnitsRoutingModule } from './administrative-units-routing
 import { WardComponent } from './component/ward/ward.component';
 import { DistrictComponent } from './component/district/district.component';
 import { ProvinceComponent } from './component/province/province.component';
-import { AdministrativeUnitsService } from './services/administrative-units.service';
+import { DistrictService } from './services/district.service';
+import { WardService } from './services/ward.service';
+import { ProvinceService } from './services/province.service';
+import { AddProvinceComponent } from './component/add-province/add-province.component';
+import { UpdateProvinceComponent } from './component/update-province/update-province.component';
+import { UpdateDistrictComponent } from './component/update-district/update-district.component';
+import { AddDistrictComponent } from './component/add-district/add-district.component';
+import { AddWardComponent } from './component/add-ward/add-ward.component';
+import { UpdateWardComponent } from './component/update-ward/update-ward.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     WardComponent,
     DistrictComponent,
-    ProvinceComponent
+    ProvinceComponent,
+    AddProvinceComponent,
+    UpdateProvinceComponent,
+    UpdateDistrictComponent,
+    AddDistrictComponent,
+    AddWardComponent,
+    UpdateWardComponent,
   ],
   imports: [
     CommonModule,
-    AdministrativeUnitsRoutingModule
+    AdministrativeUnitsRoutingModule,
+    ReactiveFormsModule  
   ],
-  exports:[
-    WardComponent,
-    DistrictComponent,
-    ProvinceComponent
-  ],
-  providers:[AdministrativeUnitsService]
+  exports: [WardComponent, DistrictComponent, ProvinceComponent],
+  providers: [DistrictService, WardService, ProvinceService],
 })
-export class AdministrativeUnitsModule { }
+export class AdministrativeUnitsModule {}

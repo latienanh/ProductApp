@@ -44,13 +44,13 @@
             </a>
             <!-- more inner pages-->
             <ul class="nav collapse show" id="product">
-              <li class="nav-item"><a class="nav-link" routerLink="/backend/product">
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/product']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product list</span>
                   </div>
                 </a>
                 <!-- more inner pages-->
               </li>
-              <li class="nav-item"><a class="nav-link" routerLink="/backend/product/add">
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/product/add']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Product</span>
                   </div>
                 </a>
@@ -65,13 +65,13 @@
             </a>
             <!-- more inner pages-->
             <ul class="nav collapse show" id="category">
-              <li class="nav-item"><a class="nav-link" routerLink="/backend/category">
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/category']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category list</span>
                   </div>
                 </a>
                 <!-- more inner pages-->
               </li>
-              <li class="nav-item"><a class="nav-link" routerLink="/backend/category/add">
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/category/add']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Category</span>
                   </div>
                 </a>
@@ -89,11 +89,13 @@
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Tỉnh & Thành phố</span></div>
                 </a><!-- more inner pages-->
                 <ul class="nav collapse show" id="province" style="">
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
-                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1" [routerLink]="['backend/administrative-units/ward']" routerLinkActive="router-link-active" >Danh sách tỉnh & thành phố</span></div>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/province']" >
+                 
+                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1" routerLinkActive="router-link-active" >Danh sách tỉnh & thành phố</span></div>
                     </a><!-- more inner pages--></li>
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
-                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Thêm tỉnh & thành phố</span></div>
+                  <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/backend/administrative-units/province/add']">
+                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1" >Thêm tỉnh & thành phố</span></div>
                     </a><!-- more inner pages--></li>
                 </ul>
               </li>
@@ -102,10 +104,11 @@
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Huyện</span></div>
                 </a><!-- more inner pages-->
                 <ul class="nav collapse show" id="district" style="">
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/district']" >
+  
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Danh sách huyện</span></div>
                     </a><!-- more inner pages--></li>
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/district/add']" >
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Thêm huyện</span></div>
                     </a><!-- more inner pages--></li>
                 </ul>
@@ -115,10 +118,10 @@
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Xã</span></div>
                 </a><!-- more inner pages-->
                 <ul class="nav collapse show" id="ward" style="">
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/ward']" >
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Danh sách xã</span></div>
                     </a><!-- more inner pages--></li>
-                  <li class="nav-item"><a class="nav-link" href="#!.html">
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/ward/add']" >
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Thêm xã</span></div>
                     </a><!-- more inner pages--></li>
                 </ul>

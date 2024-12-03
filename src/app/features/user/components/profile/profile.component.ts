@@ -1,15 +1,9 @@
 import {
-  AfterContentInit,
-  afterRender,
-  AfterViewInit,
   Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
+  OnInit
 } from '@angular/core';
-import { HttpService } from '../../../../core/services/http.service';
-import { UserService } from '../../services/user.service';
 import { UserUpdate } from '../../models/user.update';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',

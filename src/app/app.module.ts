@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,29 +18,27 @@ import { ProductModule } from './features/product/product.module';
 import { BackendLayoutComponent } from './shared/layouts/backend-layout/backend-layout.component';
 import { CommonLayoutsModule } from './shared/layouts/common-layouts/common-layouts.module';
 import { DefaultLayoutComponent } from './shared/layouts/default-layout/default-layout.component';
-
+import { AuthInterceptor } from './core/interceptors/auth-interceptor';
+import { AdministrativeUnitsModule } from './features/administrative-units/administrative-units.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DefaultLayoutComponent,
-    BackendLayoutComponent
-  ],
+  declarations: [AppComponent, DefaultLayoutComponent, BackendLayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule ,
+    FormsModule,
     CommonLayoutsModule,
     ProductModule,
     CategoryModule,
-    HttpClientModule
+    AdministrativeUnitsModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  exports:[DefaultLayoutComponent,
-    BackendLayoutComponent]
+  exports: [DefaultLayoutComponent, BackendLayoutComponent],
 })
-export class AppModule { }
+export class AppModule {}
