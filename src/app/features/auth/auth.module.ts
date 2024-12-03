@@ -16,6 +16,5 @@ import { FormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule
   ],
-  // exports:[LoginComponent]
 })
 export class AuthModule { }

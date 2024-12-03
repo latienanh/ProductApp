@@ -31,8 +31,11 @@ export class AuthService {
   }
 
   getAccessToken(): string | null {
-    const accessToken = localStorage.getItem('access-token');
-    return accessToken;
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('access-token');
+    } else {
+      return null;
+    }
   }
   setAccessToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -55,9 +58,6 @@ export class AuthService {
     }
   }
   isLoggedIn(): boolean {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.getAccessToken() != null;
-    }
-    return false; // Trả về false nếu không phải môi trường máy khách }
+    return this.getAccessToken() != null;
   }
 }

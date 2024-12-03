@@ -10,5 +10,6 @@ export interface ProvinceResponse {
     cap: string;
     isActive: boolean;
     vungSinhThai: any;  // Bạn có thể thay thế `any` bằng kiểu dữ liệu cụ thể nếu biết
+    checked:boolean;
   }
   

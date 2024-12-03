@@ -10,13 +10,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Bỏ qua yêu cầu đến endpoint 'login'
-    if (req.url.includes('/auth/login')) {
-      return next.handle(req);
-    }
-
+ 
     let headersConfig: { [key: string]: string } = {
-      'Content-Type': 'application/json',
+      // 
     };
 
     if (isPlatformBrowser(this.platformId)) {

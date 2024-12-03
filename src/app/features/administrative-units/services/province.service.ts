@@ -9,29 +9,16 @@ export class ProvinceService {
 
   constructor(private http: HttpClient) {}
 
-  // Phương thức để lấy thông tin chi tiết của một tỉnh theo ID
-  getProvinceById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  createAndUpdateProvince(province: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/master-data/tinh/create-or-update`, province);
   }
-
-  // Phương thức để tạo mới một tỉnh
-  createProvince(province: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, province);
-  }
-
-  // Phương thức để cập nhật thông tin một tỉnh theo ID
-  updateProvince(id: number, province: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, province);
-  }
-
-  // Phương thức để xóa một tỉnh theo ID
   deleteProvince(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    console.log("da vao day")
+    return this.http.post<any>(`${this.apiUrl}/master-data/tinh/delete-common-result/${id}`,{});
   }
-
-  getPaging(page: number, size: number): Observable<any> {
+  getPaging(page: number, size: number,nameSearch?:string): Observable<any> {
     const body = {
-      filter: null,
+      filter: nameSearch??null,
       isActive: null,
       skipCount: (page - 1) * size,
       maxResultCount: size

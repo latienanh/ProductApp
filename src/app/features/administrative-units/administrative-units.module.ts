@@ -15,6 +15,7 @@ import { AddDistrictComponent } from './component/add-district/add-district.comp
 import { AddWardComponent } from './component/add-ward/add-ward.component';
 import { UpdateWardComponent } from './component/update-ward/update-ward.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShareComponentModule } from '../../shared/components/share-component.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AdministrativeUnitsRoutingModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule  ,
+    ShareComponentModule
   ],
   exports: [WardComponent, DistrictComponent, ProvinceComponent],
   providers: [DistrictService, WardService, ProvinceService],

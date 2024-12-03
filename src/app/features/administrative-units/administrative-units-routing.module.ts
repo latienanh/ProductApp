@@ -9,6 +9,7 @@ import { AddProvinceComponent } from './component/add-province/add-province.comp
 import { UpdateProductComponent } from '../product/components/update-product/update-product.component';
 import { AddDistrictComponent } from './component/add-district/add-district.component';
 import { UpdateDistrictComponent } from './component/update-district/update-district.component';
+import { UpdateProvinceComponent } from './component/update-province/update-province.component';
 
 const routes: Routes = [
   { path: 'ward', component: WardComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'ward/update/:id', component: UpdateWardComponent },
   { path: 'province', component: ProvinceComponent },
   { path: 'province/add', component: AddProvinceComponent },
-  { path: 'province/update/:id', component: UpdateProductComponent },
+  { path: 'province/update', component: UpdateProvinceComponent },
   { path: 'district', component: DistrictComponent },
   { path: 'district/add', component: AddDistrictComponent },
   { path: 'district/update/:id', component: UpdateDistrictComponent },

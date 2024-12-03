@@ -1,16 +1,21 @@
 import { inject } from '@angular/core';
-import { Router, CanActivateFn } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../features/auth/services/auth.service';
-  // Giả định bạn đã có AuthService để quản lý xác thực
 
-export const authGuard: CanActivateFn = () => {
+export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.isLoggedIn()) {
-    return true;
-  } else {
-    router.navigate(['/auth/login']);  // Điều hướng đến trang đăng nhập nếu không đăng nhập
+  const isLoggedIn = authService.isLoggedIn();
+
+  if (isLoggedIn && (state.url === '/auth/login'||state.url==='/') ) {
+    router.navigate(['/backend/product']);
+    return false;
+  } 
+  else if (!isLoggedIn && state.url !== '/auth/login') {
+    router.navigate(['/auth/login']);
     return false;
   }
+  return true;
 };
