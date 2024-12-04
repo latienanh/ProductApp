@@ -18,16 +18,36 @@
         <div class="card-body">
           <div class="row gx-2">
             <div class="col-6 mb-3">
-              <label class="form-label" for="province-name">Mã Tỉnh:</label>
-              <input class="form-control" id="province-name" formControlName="maTinh" type="text" />
+              <app-form-input 
+              [control]="getFormControl('maTinh')"
+              label="Mã Tỉnh:" 
+              id="province-name"
+              [errors]="{
+                required: 'Mã tỉnh là bắt buộc.',
+                minlength: 'Mã tỉnh phải có ít nhất 3 ký tự.',
+                maxlength: 'Mã tỉnh không được vượt quá 10 ký tự.'
+              }">
+            </app-form-input>
             </div>
             <div class="col-6 mb-3">
-              <label class="form-label" for="province-ten">Tên tỉnh:</label>
-              <input class="form-control" id="province-ten" formControlName="tenTinh" type="text" />
+              <app-form-input 
+              [control]="getFormControl('tenTinh')"
+              label="Tên tỉnh:" 
+              id="province-ten"
+              [errors]="{
+                required: 'Tên tỉnh là bắt buộc.',
+              }">
+            </app-form-input>
             </div>
             <div class="col-6 mb-3">
-              <label class="form-label" for="province-cap">Cấp:</label>
-              <input class="form-control" id="province-cap" formControlName="cap" type="text" />
+              <app-form-input 
+              [control]="getFormControl('cap')"
+              label="Cấp:" 
+              id="province-cap"
+              [errors]="{
+                required: 'Cấp là bắt buộc.',
+              }">
+            </app-form-input>
             </div>
           </div>
         </div>

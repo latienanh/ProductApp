@@ -92,6 +92,7 @@
                 <th class="text-800 sort align-middle">Mã Tỉnh</th>
                 <th class="text-800 sort align-middle">Tên Tỉnh</th>
                 <th class="text-800 sort align-middle">Cấp</th>
+                <th class="text-800 sort align-middle ">Hoạt động</th>
                 <th class="text-800 sort align-middle ">Hành động</th>
               </tr>
             </thead>
@@ -117,6 +118,14 @@
                 </td>
                 <td class="align-middle col-content">
                   {{province.cap}}
+                </td>
+                <td class="align-middle col-content ">
+                    <ng-container *ngIf="province.isActive===true" >
+                      <i class="fa-solid fa-circle-check text-success" ></i>
+                    </ng-container>
+                    <ng-container *ngIf="province.isActive!==true">
+                      <i class="fa-solid fa-circle-xmark text-danger"></i>
+                    </ng-container>
                 </td>
                 <td class="align-middle col-content">
                   <button type="button" class="btn btn-primary btn-sm me-1" (click)="showUpdateProvince(province)">Sửa</button>

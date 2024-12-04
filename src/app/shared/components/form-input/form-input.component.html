@@ -1,0 +1,9 @@
+<div class="mb-3">
+  <label class="form-label" [for]="id">{{ label }}</label>
+  <input class="form-control" [id]="id" [formControl]="control" type="text" />
+  <div *ngIf="control?.dirty && control?.errors" class="invalid-feedback d-block">
+    <span *ngFor="let errorKey of getErrorKeys()">
+      <span *ngIf="control?.errors?.[errorKey]">{{ errors[errorKey] }}</span>
+    </span>
+  </div>
+</div>

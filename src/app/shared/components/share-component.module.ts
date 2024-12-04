@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination.component';
+import { FormInputComponent } from './form-input/form-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    PaginationComponent
+    PaginationComponent,
+    FormInputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports:[
-    PaginationComponent
+    PaginationComponent,
+    FormInputComponent
   ]
 })
 export class ShareComponentModule { }

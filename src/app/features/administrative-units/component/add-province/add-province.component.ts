@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProvinceService } from '../../services/province.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddProvinceComponent implements OnInit {
   provinceForm: FormGroup;
-
   constructor(
     private fb: FormBuilder,
     private provinceService: ProvinceService,
@@ -18,13 +17,17 @@ export class AddProvinceComponent implements OnInit {
     private router: Router
   ) {
     this.provinceForm = this.fb.group({
-      maTinh: ['', Validators.required],
+      maTinh: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       tenTinh: ['', Validators.required],
-      cap: ['', Validators.required],
+      cap: ['',  [Validators.required]]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
+
+  getFormControl(name: string): FormControl { return this.provinceForm.get(name) as FormControl; }
 
   addProvince(): void {
     if (this.provinceForm.valid) {
@@ -50,7 +53,7 @@ export class AddProvinceComponent implements OnInit {
         },
       });
     } else {
-      alert('Form is not valid');
+      alert('Bạn chưa nhập hết thông tin');
     }
   }
 }
