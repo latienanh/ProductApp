@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class DistrictService {
+export class DistrictService  {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   createAndUpdateDistrict(district: any): Observable<any> {

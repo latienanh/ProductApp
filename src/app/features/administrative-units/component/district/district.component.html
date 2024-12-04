@@ -27,7 +27,7 @@
                   <div class="col-12 col-md-4 mb-3">
                     <div class="input-group">
                       <select class="form-select form-select-sm" aria-label="prodvider" formControlName="codeProvinceSelect">
-                        <option selected="">Chọn tỉnh</option>
+                        <option value="" selected="">Chọn tỉnh</option>
                         <option *ngFor="let province of allProvince" [value]="province.value">
                           {{ province.value }}: {{ province.displayText }}
                         </option>

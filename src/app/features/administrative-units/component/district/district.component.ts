@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { DistrictResponse } from '../../models/district/district-response.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { DistrictService } from '../../services/district.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DistrictResponse } from '../../models/district/district-response.model';
 import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { DistrictService } from '../../services/district.service';
 import { ProvinceService } from '../../services/province.service';
 
 @Component({

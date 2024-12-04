@@ -37,6 +37,10 @@ import { ShareComponentModule } from '../../shared/components/share-component.mo
     ShareComponentModule
   ],
   exports: [WardComponent, DistrictComponent, ProvinceComponent],
-  providers: [DistrictService, WardService, ProvinceService],
+  providers: [
+    DistrictService,
+    WardService,
+    ProvinceService
+  ],
 })
 export class AdministrativeUnitsModule {}
