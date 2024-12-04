@@ -14,13 +14,13 @@ export class WardService {
   deleteWard(id: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/master-data/xa/delete-common-result/${id}`,{});
   }
-  getPaging(page: number, size: number,nameSearch?:string): Observable<any> {
+  getPaging(page: number, size: number,nameSearch?:string,codeProvice?:string,codeDistrict?:string): Observable<any> {
     const body = {
       filter: nameSearch??null,
       isActive: null,
       skipCount: (page - 1) * size,
-      // maTinh: "99",
-      // maHuyen:"999",
+      maTinh: codeProvice,
+      maHuyen:codeDistrict,
       maxResultCount: size
     };
     return this.http.post<any>(`${this.apiUrl}/master-data/xa/get-list`, body);

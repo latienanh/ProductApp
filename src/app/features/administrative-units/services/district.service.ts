@@ -24,4 +24,11 @@ export class DistrictService {
     };
     return this.http.post<any>(`${this.apiUrl}/master-data/huyen/get-list`, body);
   }
+  getAll(codeProvince?:string): Observable<any> {
+    const body = {
+        type: 2,
+        cascader: codeProvince
+    };
+    return this.http.post<any>(`${this.apiUrl}/master-data/select-data-source/get-combo-data-source`, body);
+  }
 }
