@@ -1,1 +1,81 @@
-<p>update-district works!</p>
+<div class="card mb-3">
+    <div class="card-body">
+      <div class="row flex-between-center">
+        <div class="col-md">
+          <h5 class="mb-2 mb-md-0">update a province</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <form [formGroup]="districtForm" (ngSubmit)="updateDistrict()">
+    <div class="row g-0">
+      <div class="col-lg-12 pe-lg-2">
+        <div class="card mb-3">
+          <div class="card-header bg-body-tertiary">
+            <h6 class="mb-0">Basic information</h6>
+          </div>
+          <div class="card-body">
+            <div class="row gx-2">
+
+              <div class="col-6 mb-3">
+                <app-form-input 
+                [control]="getFormControl('maHuyen')"
+                label="Mã huyện:" 
+                id="district-name"
+                [errors]="{
+                  required: 'Mã huyện là bắt buộc.',
+                  minlength: 'Mã huyện phải có ít nhất 3 ký tự.',
+                  maxlength: 'Mã huyện không được vượt quá 10 ký tự.'
+                }">
+              </app-form-input>
+              </div>
+              <div class="col-6 mb-3">
+                <app-form-input 
+                [control]="getFormControl('tenHuyen')"
+                label="Tên huyện:" 
+                id="district-ten"
+                [errors]="{
+                  required: 'Tên huyện là bắt buộc.',
+                }">
+              </app-form-input>
+              </div>
+              <div class="col-6 mb-3">
+                <app-form-input 
+                [control]="getFormControl('cap')"
+                label="Cấp:" 
+                id="district-cap"
+                [errors]="{
+                  required: 'Cấp là bắt buộc.',
+                }">
+              </app-form-input>
+              <div class="col-6 mb-3">
+                <label class="form-label" id="district-matinh">Tỉnh</label>
+                <select class="form-select form-select-sm" aria-label="prodvider" formControlName="maTinh">
+                    <option selected="">Chọn tỉnh</option>
+                    <option *ngFor="let province of allProvince" [value]="province.value">
+                      {{ province.value }}: {{ province.displayText }}
+                    </option>
+                  </select>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md">
+            <h5 class="mb-2 mb-md-0">You're almost done!</h5>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button" [routerLink]="['..']">Discard</button>
+            <button class="btn btn-primary" type="submit">update province</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

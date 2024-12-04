@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'province/update', component: UpdateProvinceComponent },
   { path: 'district', component: DistrictComponent },
   { path: 'district/add', component: AddDistrictComponent },
-  { path: 'district/update/:id', component: UpdateDistrictComponent },
+  { path: 'district/update', component: UpdateDistrictComponent },
 ];
 
 @NgModule({

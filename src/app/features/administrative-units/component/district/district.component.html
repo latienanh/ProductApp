@@ -1,21 +1,197 @@
-<div>
-  <label>
-    <input
-      type="checkbox"
-      [checked]="allChecked"
-      [indeterminate]="indeterminate"
-      (change)="setAll($event)"
-    />
-    Select All
-  </label>
-</div>
-<div *ngFor="let item of items; let i = index">
-  <label>
-    <input
-      type="checkbox"
-      [checked]="item.checked"
-      (change)="updateSingleCheckbox(i)"
-    />
-    {{ item.name }}
-  </label>
-</div>
+<div class="row gx-3">
+  <div class="col-xxl-10 col-xl-9">
+    <div class="card" id="districtsTable">
+      <div class="card-header border-bottom border-200 px-0">
+        <div class="d-lg-flex justify-content-between">
+          <div class="row flex-between-center gy-2 px-x1">
+            <div class="col-auto pe-0">
+              <h6 class="mb-0">Tất cả huyện</h6>
+            </div>
+            <div class="col-auto">
+              <form [formGroup]="searchForm" (ngSubmit)="search()">
+                <div class="row">
+                  <!-- Input Search -->
+                  <div class="col-12 col-md-5 mb-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control form-control-sm shadow-none search"
+                        type="search"
+                        placeholder="Search by name"
+                        aria-label="search"
+                        formControlName="nameSearch"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Province Select -->
+                  <div class="col-12 col-md-4 mb-3">
+                    <div class="input-group">
+                      <select class="form-select form-select-sm" aria-label="prodvider" formControlName="codeProvinceSelect">
+                        <option selected="">Chọn tỉnh</option>
+                        <option *ngFor="let province of allProvince" [value]="province.value">
+                          {{ province.value }}: {{ province.displayText }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+              
+                  <!-- Search Button -->
+                  <div class="col-12 col-md-3 mb-3 d-flex justify-content-center align-items-center">
+                    <button
+                      class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"
+                      type="submit"
+                    >
+                      <svg
+                        class="svg-inline--fa fa-search fa-w-16 fs-10"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fa"
+                        data-icon="search"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        data-fa-i2svg=""
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+          <div class="border-bottom border-200 my-3"></div>
+          <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1"><button
+              class="btn btn-sm btn-falcon-default d-xl-none" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#districtOffcanvas" aria-controls="districtOffcanvas"><svg
+                class="svg-inline--fa fa-filter fa-w-16" data-fa-transform="shrink-4 down-1" aria-hidden="true"
+                focusable="false" data-prefix="fas" data-icon="filter" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.5em 0.5625em;">
+                <g transform="translate(256 256)">
+                  <g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)">
+                    <path fill="currentColor"
+                      d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                      transform="translate(-256 -256)"></path>
+                  </g>
+                </g>
+              </svg><!-- <span class="fas fa-filter" data-fa-transform="shrink-4 down-1"></span> Font Awesome fontawesome.com --><span
+                class="ms-1 d-none d-sm-inline-block">Filter</span></button>
+            <div class="bg-300 mx-3 d-none d-lg-block d-xl-none" style="width:1px; height:29px"></div>
+            <div class="d-none" id="table-district-actions">
+              <div class="d-flex">
+                <select class="form-select form-select-sm" aria-label="Bulk actions " [formControl]="bulkActionControl">
+                  <option value="" selected="">Bulk actions</option>
+                  <option value="Refund">Refund</option>
+                  <option value="Delete">Delete</option>
+                  <option value="Archive">Archive</option>
+                </select>
+                <button class="btn btn-falcon-default btn-sm ms-2" type="button" (click)="bulkDistrict()">Apply</button></div>
+            </div>
+            <div class="d-flex align-items-center " id="table-district-replace-element">
+
+              <button class="btn btn-falcon-default btn-sm mx-2" type="button" (click)="showAddDistrict()"><span
+                  class="fas fa-plus" data-fa-transform="shrink-3"></span><span
+                  class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Thêm huyện</span></button>
+              <div class="dropdown font-sans-serif ms-2"><button
+                  class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none" type="button"
+                  id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true"
+                  aria-expanded="false"><svg class="svg-inline--fa fa-ellipsis-h fa-w-16 fs-11" aria-hidden="true"
+                    focusable="false" data-prefix="fas" data-icon="ellipsis-h" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                    <path fill="currentColor"
+                      d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z">
+                    </path>
+                  </svg><!-- <span class="fas fa-ellipsis-h fs-11"></span> Font Awesome fontawesome.com --></button>
+                <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="preview-dropdown"><a
+                    class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
+                  <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive scrollbar">
+          <table class="table">
+            <thead class="">
+              <tr class="table-info">
+                <th class="py-2 fs-9 pe-2" style="width: 28px;">
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input" id="checkbox-bulk-table-districts-select" 
+                    type="checkbox"  
+                    [checked]="allChecked"
+                    [indeterminate]="indeterminate"
+                    (change)="setAll($event)">
+                  </div>
+                </th>
+                <th class="text-800 sort align-middle ">Id</th>
+                <th class="text-800 sort align-middle">Mã tỉnh</th>
+                <th class="text-800 sort align-middle">Mã huyện</th>
+                <th class="text-800 sort align-middle">Tên huyện</th>
+                <th class="text-800 sort align-middle">Cấp</th>
+                <th class="text-800 sort align-middle ">Hoạt động</th>
+                <th class="text-800 sort align-middle ">Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="table-district-body">
+              <tr *ngFor="let district of districts; let i = index" >
+                <td class="align-middle fs-9 py-3 col-content">
+                  <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox"
+                     [id]="'table-view-districts-' + district.id" 
+                
+                     [checked]="district.checked"
+                     (change)="updateSingleCheckbox(i,district.id)" />
+                  </div>
+                </td>
+                <td class="align-middle col-content" >
+                  {{district.id}}
+                </td>
+                <td class="align-middle  col-content">
+                  {{district.maTinh}}
+                </td>
+                <td class="align-middle  col-content">
+                  {{district.maHuyen}}
+                </td>
+                <td class="align-middle  col-content">
+                  {{district.tenHuyen}}
+                </td>
+               
+                <td class="align-middle col-content">
+                  {{district.cap}}
+                </td>
+                <td class="align-middle col-content ">
+                    <ng-container *ngIf="district.isActive===true" >
+                      <i class="fa-solid fa-circle-check text-success" ></i>
+                    </ng-container>
+                    <ng-container *ngIf="district.isActive!==true">
+                      <i class="fa-solid fa-circle-xmark text-danger"></i>
+                    </ng-container>
+                </td>
+                <td class="align-middle col-content">
+                  <button type="button" class="btn btn-primary btn-sm me-1" (click)="showUpdateDistrict(district)">Sửa</button>
+                  <!-- <button type="button" class="btn btn-danger btn-sm" (click)="removedistrict(district.id)">Xóa</button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="text-center d-none" id="districts-table-fallback">
+            <p class="fw-bold fs-8 mt-3">No district found</p>
+          </div>
+        </div>
+      </div>
+      <app-pagination
+      [currentPage]="currentPage"
+      [maxPage]="maxPage"
+      (pageChanged)="handlePageChange($event)">
+    </app-pagination>
+
+    </div>
+  </div>
+

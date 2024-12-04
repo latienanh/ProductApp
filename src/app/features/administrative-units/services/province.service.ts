@@ -25,5 +25,12 @@ export class ProvinceService {
     };
     return this.http.post<any>(`${this.apiUrl}/master-data/tinh/get-list`, body);
   }
+  getAll(): Observable<any> {
+    const body = {
+        type: 1,
+        cascader: ""
+    };
+    return this.http.post<any>(`${this.apiUrl}/master-data/select-data-source/get-combo-data-source`, body);
+  }
   
 }
