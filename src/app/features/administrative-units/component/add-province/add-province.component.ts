@@ -53,8 +53,4 @@ export class AddProvinceComponent implements OnInit {
       alert('Form is not valid');
     }
   }
-
-  discardAddProvince(): void {
-    this.router.navigate(['..'], { relativeTo: this.route });
-  }
 }

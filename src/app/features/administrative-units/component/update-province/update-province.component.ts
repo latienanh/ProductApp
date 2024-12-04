@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProvinceService } from '../../services/province.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-province',
@@ -14,7 +14,8 @@ export class UpdateProvinceComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private provinceService: ProvinceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router : Router
   ) {
     this.provinceForm = this.fb.group({ // Khởi tạo form với giá trị mặc định
       id: ["", Validators.required],
@@ -46,6 +47,7 @@ export class UpdateProvinceComponent implements OnInit {
           console.log('Province update successfully', response);
           if (response.isSuccessful) {
             alert('sửa thành công');
+            this.router.navigate(['..'], { relativeTo: this.route });
           } else {
             alert('sửa thất bại');
           }
