@@ -5,10 +5,12 @@ import { BackendLayoutComponent } from './shared/layouts/backend-layout/backend-
 import { DefaultLayoutComponent } from './shared/layouts/default-layout/default-layout.component';
 import { BACKEND_LAYOUT } from './shared/routes/backend-layout-routes';
 import { DEFAULT_ROUTES } from './shared/routes/default-layout-routes';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 const routes: Routes = [
   { path: '', component: DefaultLayoutComponent, children: DEFAULT_ROUTES ,canActivate:[authGuard] },
   { path: 'backend', component: BackendLayoutComponent, children: BACKEND_LAYOUT,canActivate:[authGuard] },
+  { path: 'loading', component: LoadingComponent },
   { path: '**', redirectTo: '404' }
 ];
 

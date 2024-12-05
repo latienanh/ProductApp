@@ -3,7 +3,6 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
 import { LoginRequest } from '../models/auth-request.model.ts/login-request.model';
 import { LoginResponse } from '../models/auth-response.model.ts/login-response.model';
-import { log } from 'console';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -59,5 +58,20 @@ export class AuthService {
   }
   isLoggedIn(): boolean {
     return this.getAccessToken() != null;
+  }
+  logout(): Observable<LoginResponse> {
+    const result = this.http.post<LoginResponse>(`${this.apiURL}/logout`, {});
+    this.removeItemLocalStorage('access-token');
+    this.removeItemLocalStorage('refresh-token');
+    return result;
+  }
+  removeItemLocalStorage(key: string): void {
+
+      localStorage.removeItem(key); // Remove item from localStorage
+  
+  }
+  isLoading()
+  {
+      return !isPlatformBrowser(this.platformId)
   }
 }

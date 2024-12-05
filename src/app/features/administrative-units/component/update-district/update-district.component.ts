@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProvinceService } from '../../services/province.service';
-import { DistrictService } from '../../services/district.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { ProvinceResponse } from '../../models/province/province-response.model';
+import { DistrictService } from '../../services/district.service';
+import { ProvinceService } from '../../services/province.service';
+import { GetListProvinceResponse } from '../../models/province/get-all-province-response.model';
 
 @Component({
   selector: 'app-update-district',
@@ -12,7 +13,7 @@ import { GetAllProvinceResponse } from '../../models/province/get-all-province-r
 })
 export class UpdateDistrictComponent {
   districtForm: FormGroup;
-  allProvince: GetAllProvinceResponse[] = [];
+  allProvince: ProvinceResponse[] = [];
   constructor(
     private fb: FormBuilder,
     private provinceService: ProvinceService,
@@ -23,7 +24,7 @@ export class UpdateDistrictComponent {
     this.districtForm = this.fb.group({ // Khởi tạo form với giá trị mặc định
       id: ["", Validators.required],
       maTinh: ["", Validators.required],
-      maHuyen: ["", Validators.required],
+      maHuyen: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       tenHuyen: ["", Validators.required],
       cap: ["", Validators.required],
     });
@@ -71,8 +72,8 @@ export class UpdateDistrictComponent {
     this.provinceService
       .getAll()
       .subscribe({
-        next: (data) => {
-         this.allProvince = [...data]
+        next: (data:GetListProvinceResponse) => {
+         this.allProvince = [...data.items]
          console.log(this.allProvince)
         },
         error: (error) => {

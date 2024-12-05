@@ -9,9 +9,9 @@
               </div>
               <div class="col-auto">
                 <form [formGroup]="searchForm" (ngSubmit)="search()">
-                  <div class="row">
+                  <div class="row align-items-center">
                     <!-- Input Search -->
-                    <div class="col-12 col-md-5 mb-3">
+                    <div class="col-12 col-md-4">
                       <div class="input-group">
                         <input
                           class="form-control form-control-sm shadow-none search"
@@ -22,30 +22,33 @@
                         />
                       </div>
                     </div>
-                
+                  
                     <!-- Province Select -->
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-3 ">
                       <div class="input-group">
-                        <select class="form-select form-select-sm" aria-label="prodvider" formControlName="codeProvinceSelect" (change)="getAllDistrict($event)">
-                          <option selected="">Chọn tỉnh</option>
-                          <option *ngFor="let province of allProvince" [value]="province.value">
-                            {{ province.value }}: {{ province.displayText }}
+                        <select class="form-select form-select-sm" aria-label="province" formControlName="codeProvinceSelect" (change)="getAllDistrict($event)">
+                          <option value="" selected="">Chọn tỉnh</option>
+                          <option *ngFor="let province of allProvince" [value]="province.maTinh">
+                            {{ province.maTinh }}: {{ province.tenTinh }}
                           </option>
                         </select>
                       </div>
                     </div>
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="input-group">
-                          <select class="form-select form-select-sm" aria-label="district" formControlName="codeDistrictSelect">
-                            <option selected="">Chọn huyện</option>
-                            <option *ngFor="let district of allDistrict" [value]="district.value">
-                              {{ district.value }}: {{ district.displayText }}
-                            </option>
-                          </select>
-                        </div>
+                  
+                    <!-- District Select -->
+                    <div class="col-12 col-md-3 ">
+                      <div class="input-group">
+                        <select class="form-select form-select-sm" aria-label="district" formControlName="codeDistrictSelect">
+                          <option value="" selected="">Chọn huyện</option>
+                          <option *ngFor="let district of allDistrict" [value]="district.maHuyen">
+                            {{ district.maHuyen }}: {{ district.tenHuyen }}
+                          </option>
+                        </select>
                       </div>
+                    </div>
+                  
                     <!-- Search Button -->
-                    <div class="col-12 col-md-3 mb-3 d-flex justify-content-center align-items-center">
+                    <div class="col-12 col-md-2 ">
                       <button
                         class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"
                         type="submit"
@@ -69,6 +72,7 @@
                       </button>
                     </div>
                   </div>
+                  
                 </form>
                 
               </div>
@@ -94,9 +98,7 @@
                 <div class="d-flex">
                   <select class="form-select form-select-sm" aria-label="Bulk actions " [formControl]="bulkActionControl">
                     <option value="" selected="">Bulk actions</option>
-                    <option value="Refund">Refund</option>
-                    <option value="Delete">Delete</option>
-                    <option value="Archive">Archive</option>
+                    <option value="Delete">Delete</option>              
                   </select>
                   <button class="btn btn-falcon-default btn-sm ms-2" type="button" (click)="bulkWard()">Apply</button></div>
               </div>
@@ -104,22 +106,7 @@
   
                 <button class="btn btn-falcon-default btn-sm mx-2" type="button" (click)="showAddWard()"><span
                     class="fas fa-plus" data-fa-transform="shrink-3"></span><span
-                    class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Thêm huyện</span></button>
-                <div class="dropdown font-sans-serif ms-2"><button
-                    class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none" type="button"
-                    id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true"
-                    aria-expanded="false"><svg class="svg-inline--fa fa-ellipsis-h fa-w-16 fs-11" aria-hidden="true"
-                      focusable="false" data-prefix="fas" data-icon="ellipsis-h" role="img"
-                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                      <path fill="currentColor"
-                        d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z">
-                      </path>
-                    </svg><!-- <span class="fas fa-ellipsis-h fs-11"></span> Font Awesome fontawesome.com --></button>
-                  <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="preview-dropdown"><a
-                      class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
-                  </div>
-                </div>
+                    class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Thêm xã</span></button>
               </div>
             </div>
           </div>
@@ -145,7 +132,7 @@
                   <th class="text-800 sort align-middle">Tên Xã</th>
                   <th class="text-800 sort align-middle">Cấp</th>
                   <th class="text-800 sort align-middle ">Hoạt động</th>
-                
+            
                   <th class="text-800 sort align-middle ">Xã Nghèo</th>
                   <th class="text-800 sort align-middle ">Xã Miền Núi</th>
                   <th class="text-800 sort align-middle ">Xã Dân tộc</th>

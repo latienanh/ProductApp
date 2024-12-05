@@ -56,34 +56,39 @@
       <div class="row gx-2">
         <div class="col-6">
           <input class="btn-check" id="navbar-style-transparent" type="radio" name="navbarStyle" value="transparent"
-            data-theme-control="navbarStyle" />
-          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-transparent"> <img
-              class="img-fluid img-prototype" src="../../../assets/img/generic/default.png" alt="" /><span
-              class="label-text"> Transparent</span></label>
+            [(ngModel)]="selectedStyle" (change)="onStyleChange()" />
+          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-transparent">
+            <img class="img-fluid img-prototype" src="../../../assets/img/generic/default.png" alt="" />
+            <span class="label-text"> Transparent</span>
+          </label>
         </div>
         <div class="col-6">
           <input class="btn-check" id="navbar-style-inverted" type="radio" name="navbarStyle" value="inverted"
-            data-theme-control="navbarStyle" />
-          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-inverted"> <img
-              class="img-fluid img-prototype" src="../../../assets/img/generic/inverted.png" alt="" /><span
-              class="label-text"> Inverted</span></label>
+            [(ngModel)]="selectedStyle" (change)="onStyleChange()" />
+          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-inverted">
+            <img class="img-fluid img-prototype" src="../../../assets/img/generic/inverted.png" alt="" />
+            <span class="label-text"> Inverted</span>
+          </label>
         </div>
         <div class="col-6">
           <input class="btn-check" id="navbar-style-card" type="radio" name="navbarStyle" value="card"
-            data-theme-control="navbarStyle" />
-          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-card"> <img
-              class="img-fluid img-prototype" src="../../../assets/img/generic/card.png" alt="" /><span
-              class="label-text"> Card</span></label>
+            [(ngModel)]="selectedStyle" (change)="onStyleChange()" />
+          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-card">
+            <img class="img-fluid img-prototype" src="../../../assets/img/generic/card.png" alt="" />
+            <span class="label-text"> Card</span>
+          </label>
         </div>
         <div class="col-6">
           <input class="btn-check" id="navbar-style-vibrant" type="radio" name="navbarStyle" value="vibrant"
-            data-theme-control="navbarStyle" />
-          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-vibrant"> <img
-              class="img-fluid img-prototype" src="../../../assets/img/generic/vibrant.png" alt="" /><span
-              class="label-text"> Vibrant</span></label>
+            [(ngModel)]="selectedStyle" (change)="onStyleChange()" />
+          <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-vibrant">
+            <img class="img-fluid img-prototype" src="../../../assets/img/generic/vibrant.png" alt="" />
+            <span class="label-text"> Vibrant</span>
+          </label>
         </div>
       </div>
     </div>
+    
    
   </div>
 </div><a class="card setting-toggle" href="#settings-offcanvas" data-bs-toggle="offcanvas">

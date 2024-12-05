@@ -14,7 +14,7 @@ import { UpdateProvinceComponent } from './component/update-province/update-prov
 const routes: Routes = [
   { path: 'ward', component: WardComponent },
   { path: 'ward/add', component: AddWardComponent },
-  { path: 'ward/update/:id', component: UpdateWardComponent },
+  { path: 'ward/update', component: UpdateWardComponent },
   { path: 'province', component: ProvinceComponent },
   { path: 'province/add', component: AddProvinceComponent },
   { path: 'province/update', component: UpdateProvinceComponent },

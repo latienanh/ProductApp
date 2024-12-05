@@ -1,1 +1,90 @@
-<p>update-ward works!</p>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row flex-between-center">
+      <div class="col-md">
+        <h5 class="mb-2 mb-md-0">Update a Ward</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="wardForm" (ngSubmit)="updateWard()">
+  <div class="row g-0">
+    <div class="col-lg-12 pe-lg-2">
+      <div class="card mb-3">
+        <div class="card-header bg-body-tertiary">
+          <h6 class="mb-0">Basic Information</h6>
+        </div>
+        <div class="card-body">
+          <div class="row gx-2">
+            <!-- Row 1 -->
+            <div class="col-4 mb-3">
+              <app-form-input
+                [control]="getFormControl('maXa')"
+                label="Mã Xã:"
+                id="ward-code"
+                [errors]="{
+                  required: 'Mã xã là bắt buộc.',
+                  minlength: 'Mã xã phải có ít nhất 3 ký tự.',
+                  maxlength: 'Mã xã không được vượt quá 10 ký tự.'
+                }">
+              </app-form-input>
+            </div>
+            <div class="col-4 mb-3">
+              <app-form-input
+                [control]="getFormControl('tenXa')"
+                label="Tên Xã:"
+                id="ward-name"
+                [errors]="{
+                  required: 'Tên xã là bắt buộc.',
+                }">
+              </app-form-input>
+            </div>
+            <div class="col-4 mb-3">
+              <app-form-input
+                [control]="getFormControl('cap')"
+                label="Cấp:"
+                id="ward-cap"
+                [errors]="{
+                  required: 'Cấp là bắt buộc.',
+                }">
+              </app-form-input>
+            </div>
+            <!-- Row 2 -->
+            <div class="col-4 mb-3">
+              <label class="form-label" id="ward-matinh">Tỉnh</label>
+              <select class="form-select form-select-sm" aria-label="provider" formControlName="maTinh" (change)="onProvinceChange($event)">
+                <option value="" selected>Chọn tỉnh</option>
+                <option *ngFor="let province of allProvince" [value]="province.maTinh">
+                  {{ province.maTinh }}: {{ province.tenTinh }}
+                </option>
+              </select>
+            </div>
+            <div class="col-4 mb-3">
+              <label class="form-label" id="ward-mahuyen">Huyện</label>
+              <select class="form-select form-select-sm" aria-label="district" formControlName="maHuyen">
+                <option value="" selected>Chọn Huyện</option>
+                <option *ngFor="let district of allDistrict" [value]="district.maHuyen">
+                  {{ district.maHuyen }}: {{ district.tenHuyen }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md">
+          <h5 class="mb-2 mb-md-0">You're almost done!</h5>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button" [routerLink]="['..']">Discard</button>
+          <button class="btn btn-primary" type="submit">Update Ward</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

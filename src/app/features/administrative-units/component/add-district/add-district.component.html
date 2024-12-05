@@ -52,9 +52,9 @@
               <div class="col-6 mb-3">
                 <label class="form-label" id="district-matinh">Tỉnh</label>
                 <select class="form-select form-select-sm" aria-label="prodvider" formControlName="maTinh">
-                    <option selected="">Chọn tỉnh</option>
-                    <option *ngFor="let province of allProvince" [value]="province.value">
-                      {{ province.value }}: {{ province.displayText }}
+                    <option value="" selected="">Chọn tỉnh</option>
+                    <option *ngFor="let province of allProvince" [value]="province.maTinh">
+                      {{ province.maTinh }}: {{ province.tenTinh }}
                     </option>
                   </select>
               </div>

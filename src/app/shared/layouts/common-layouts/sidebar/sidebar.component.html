@@ -1,9 +1,3 @@
-<script>
-  var navbarStyle = localStorage.getItem("navbarStyle");
-  if (navbarStyle && navbarStyle !== 'transparent') {
-    document.querySelector('.navbar-vertical').classList.add(`navbar-${navbarStyle}`);
-  }
-</script>
 <div class="d-flex align-items-center">
   <div class="toggle-icon-wrapper">
 
@@ -30,20 +24,20 @@
             <hr class="mb-0 navbar-vertical-divider" />
           </div>
         </div>
-        <!-- parent pages--><a class="nav-link dropdown-indicator" href="#e-commerce" role="button"
-          data-bs-toggle="collapse" aria-expanded="true" aria-controls="e-commerce">
+        <!-- parent pages--><a class="nav-link dropdown-indicator collapsed" href="#e-commerce" role="button"
+          data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
           <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                 class="fas fa-shopping-cart"></span></span><span class="nav-link-text ps-1">E commerce</span>
           </div>
         </a>
-        <ul class="nav collapse show" id="e-commerce">
+        <ul class="nav collapse" id="e-commerce">
           <li class="nav-item"><a class="nav-link dropdown-indicator " href="#product" data-bs-toggle="collapse"
-              aria-expanded="true" aria-controls="e-commerce">
+              aria-expanded="false" aria-controls="e-commerce">
               <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product</span>
               </div>
             </a>
             <!-- more inner pages-->
-            <ul class="nav collapse show" id="product">
+            <ul class="nav collapse" id="product">
               <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/product']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product list</span>
                   </div>
@@ -58,13 +52,13 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link dropdown-indicator" href="#category" data-bs-toggle="collapse"
-              aria-expanded="true" aria-controls="e-commerce">
+          <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#category" data-bs-toggle="collapse"
+              aria-expanded="false" aria-controls="e-commerce">
               <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category</span>
               </div>
             </a>
             <!-- more inner pages-->
-            <ul class="nav collapse show" id="category">
+            <ul class="nav collapse" id="category">
               <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/category']">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category list</span>
                   </div>
@@ -79,16 +73,16 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item tienanh"><a class="nav-link dropdown-indicator" href="#level-three"
-              data-bs-toggle="collapse" aria-expanded="true" aria-controls="multi-level">
+          <li class="nav-item tienanh"><a class="nav-link dropdown-indicator collapsed" href="#level-three"
+              data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
               <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Địa chỉ hành chính</span></div>
             </a><!-- more inner pages-->
-            <ul class="nav collapse show" id="level-three" style="">
-              <li class="nav-item"><a class="nav-link dropdown-indicator" href="#province" data-bs-toggle="collapse"
-                  aria-expanded="true" aria-controls="level-three">
+            <ul class="nav collapse" id="level-three" style="">
+              <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#province" data-bs-toggle="collapse"
+                  aria-expanded="false" aria-controls="level-three">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Tỉnh & Thành phố</span></div>
                 </a><!-- more inner pages-->
-                <ul class="nav collapse show" id="province" style="">
+                <ul class="nav collapse" id="province" style="">
                   <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/province']" >
                  
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1" routerLinkActive="router-link-active" >Danh sách tỉnh & thành phố</span></div>
@@ -99,11 +93,11 @@
                     </a><!-- more inner pages--></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link dropdown-indicator" href="#district" data-bs-toggle="collapse"
-                  aria-expanded="true" aria-controls="level-three">
+              <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#district" data-bs-toggle="collapse"
+                  aria-expanded="false" aria-controls="level-three">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Huyện</span></div>
                 </a><!-- more inner pages-->
-                <ul class="nav collapse show" id="district" style="">
+                <ul class="nav collapse" id="district" style="">
                   <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/district']" >
   
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Danh sách huyện</span></div>
@@ -113,11 +107,11 @@
                     </a><!-- more inner pages--></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link dropdown-indicator" href="#ward" data-bs-toggle="collapse"
-                  aria-expanded="true" aria-controls="level-three">
+              <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#ward" data-bs-toggle="collapse"
+                  aria-expanded="false" aria-controls="level-three">
                   <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Xã</span></div>
                 </a><!-- more inner pages-->
-                <ul class="nav collapse show" id="ward" style="">
+                <ul class="nav collapse" id="ward" style="">
                   <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/administrative-units/ward']" >
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Danh sách xã</span></div>
                     </a><!-- more inner pages--></li>
@@ -140,21 +134,6 @@
           </div>
         </div>
     </ul>
-    <div class="settings mb-3">
-      <div class="card shadow-none">
-        <div class="card-body alert mb-0" role="alert">
-          <div class="btn-close-falcon-container">
-            <button class="btn btn-link btn-close-falcon p-0" aria-label="Close" data-bs-dismiss="alert"></button>
-          </div>
-          <div class="text-center"><img src="../../../assets/img/icons/spot-illustrations/navbar-vertical.png" alt=""
-              width="80" />
-            <p class="fs--2 mt-2">Loving what you see? <br />Get your copy of <a href="#!">Falcon</a></p>
-            <div class="d-grid"><a class="btn btn-sm btn-purchase"
-                href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"
-                target="_blank">Purchase</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </div>

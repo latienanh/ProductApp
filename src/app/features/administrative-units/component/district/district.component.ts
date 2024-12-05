@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DistrictResponse } from '../../models/district/district-response.model';
-import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { ProvinceResponse } from '../../models/province/province-response.model';
 import { DistrictService } from '../../services/district.service';
 import { ProvinceService } from '../../services/province.service';
+import { GetListProvinceResponse } from '../../models/province/get-all-province-response.model';
 
 @Component({
   selector: 'app-district',
@@ -13,7 +14,7 @@ import { ProvinceService } from '../../services/province.service';
 })
 export class DistrictComponent {
   districts: DistrictResponse[] = [];
-  allProvince: GetAllProvinceResponse[] = [];
+  allProvince: ProvinceResponse[] = [];
   currentPage = 1;
   maxPage = 0;
   pageSize = 2;
@@ -58,8 +59,8 @@ export class DistrictComponent {
     this.provinceService
       .getAll()
       .subscribe({
-        next: (data) => {
-         this.allProvince = [...data]
+        next: (data:GetListProvinceResponse) => {
+         this.allProvince = [...data.items]
          console.log(this.allProvince)
         },
         error: (error) => {

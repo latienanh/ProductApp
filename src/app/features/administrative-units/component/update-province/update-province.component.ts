@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProvinceService } from '../../services/province.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class UpdateProvinceComponent implements OnInit {
   ) {
     this.provinceForm = this.fb.group({ // Khởi tạo form với giá trị mặc định
       id: ["", Validators.required],
-      maTinh: ["", Validators.required],
+      maTinh: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       tenTinh: ["", Validators.required],
       cap: ["", Validators.required],
     });
@@ -60,4 +60,5 @@ export class UpdateProvinceComponent implements OnInit {
       alert('Form is not valid');
     }
   }
+  getFormControl(name: string): FormControl { return this.provinceForm.get(name) as FormControl; }
 }

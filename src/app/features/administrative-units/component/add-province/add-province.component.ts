@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProvinceService } from '../../services/province.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { ProvinceService } from '../../services/province.service';
 
 @Component({
   selector: 'app-add-province',

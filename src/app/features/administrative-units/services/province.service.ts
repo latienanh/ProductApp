@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { GetListProvinceResponse } from '../models/province/get-all-province-response.model';
 
 @Injectable()
 export class ProvinceService {
@@ -13,7 +14,6 @@ export class ProvinceService {
     return this.http.post<any>(`${this.apiUrl}/master-data/tinh/create-or-update`, province);
   }
   deleteProvince(id: number): Observable<any> {
-    console.log("da vao day")
     return this.http.post<any>(`${this.apiUrl}/master-data/tinh/delete-common-result/${id}`,{});
   }
   getPaging(page: number, size: number,nameSearch?:string): Observable<any> {
@@ -23,14 +23,16 @@ export class ProvinceService {
       skipCount: (page - 1) * size,
       maxResultCount: size
     };
-    return this.http.post<any>(`${this.apiUrl}/master-data/tinh/get-list`, body);
+    return this.http.post<GetListProvinceResponse>(`${this.apiUrl}/master-data/tinh/get-list`, body);
   }
   getAll(): Observable<any> {
     const body = {
-        type: 1,
-        cascader: ""
+      filter: null,
+      isActive: null,
+      skipCount: 0,
+      maxResultCount: 999
     };
-    return this.http.post<any>(`${this.apiUrl}/master-data/select-data-source/get-combo-data-source`, body);
+    return this.http.post<GetListProvinceResponse>(`${this.apiUrl}/master-data/tinh/get-list`, body);
   }
   
 }

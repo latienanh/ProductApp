@@ -1,55 +1,74 @@
 <div class="card mb-3">
-    <div class="card-body">
-      <div class="row flex-between-center">
-        <div class="col-md">
-          <h5 class="mb-2 mb-md-0">update a province</h5>
-        </div>
+  <div class="card-body">
+    <div class="row flex-between-center">
+      <div class="col-md">
+        <h5 class="mb-2 mb-md-0">Update a Province</h5>
       </div>
     </div>
   </div>
-  
-  <form [formGroup]="provinceForm" (ngSubmit)="updateProvince()">
-    <div class="row g-0">
-      <div class="col-lg-12 pe-lg-2">
-        <div class="card mb-3">
-          <div class="card-header bg-body-tertiary">
-            <h6 class="mb-0">Basic information</h6>
-          </div>
-          <div class="card-body">
-            <div class="row gx-2">
-              <div class="col-6 mb-3">
-                <label class="form-label" for="province-id">Id:</label>
-                <input class="form-control" id="province-id" formControlName="id" type="text" readonly/>
-              </div>
-              <div class="col-6 mb-3">
-                <label class="form-label" for="province-name">Mã Tỉnh:</label>
-                <input class="form-control" id="province-name" formControlName="maTinh" type="text" />
-              </div>
-              <div class="col-6 mb-3">
-                <label class="form-label" for="province-ten">Tên tỉnh:</label>
-                <input class="form-control" id="province-ten" formControlName="tenTinh" type="text" />
-              </div>
-              <div class="col-6 mb-3">
-                <label class="form-label" for="province-cap">Cấp:</label>
-                <input class="form-control" id="province-cap" formControlName="cap" type="text" />
-              </div>
+</div>
+
+<form [formGroup]="provinceForm" (ngSubmit)="updateProvince()">
+  <div class="row g-0">
+    <div class="col-lg-12 pe-lg-2">
+      <div class="card mb-3">
+        <div class="card-header bg-body-tertiary">
+          <h6 class="mb-0">Basic Information</h6>
+        </div>
+        <div class="card-body">
+          <div class="row gx-2">
+            <div class="col-6 mb-3">
+              <label class="form-label" for="province-id">Id:</label>
+              <input class="form-control" id="province-id" formControlName="id" type="text" readonly />
+            </div>
+            <div class="col-6 mb-3">
+              <app-form-input
+                [control]="getFormControl('maTinh')"
+                label="Mã Tỉnh:"
+                id="province-code"
+                [errors]="{
+                  required: 'Mã tỉnh là bắt buộc.',
+                  minlength: 'Mã tỉnh phải có ít nhất 3 ký tự.',
+                  maxlength: 'Mã tỉnh không được vượt quá 10 ký tự.'
+                }">
+              </app-form-input>
+            </div>
+            <div class="col-6 mb-3">
+              <app-form-input
+                [control]="getFormControl('tenTinh')"
+                label="Tên Tỉnh:"
+                id="province-name"
+                [errors]="{
+                  required: 'Tên tỉnh là bắt buộc.'
+                }">
+              </app-form-input>
+            </div>
+            <div class="col-6 mb-3">
+              <app-form-input
+                [control]="getFormControl('cap')"
+                label="Cấp:"
+                id="province-cap"
+                [errors]="{
+                  required: 'Cấp là bắt buộc.'
+                }">
+              </app-form-input>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="card mt-3">
-      <div class="card-body">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-md">
-            <h5 class="mb-2 mb-md-0">You're almost done!</h5>
-          </div>
-          <div class="col-auto">
-            <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button" [routerLink]="['..']">Discard</button>
-            <button class="btn btn-primary" type="submit">Update province</button>
-          </div>
+  </div>
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md">
+          <h5 class="mb-2 mb-md-0">You're almost done!</h5>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button" [routerLink]="['..']">Discard</button>
+          <button class="btn btn-primary" type="submit">Update Province</button>
         </div>
       </div>
     </div>
-  </form>
-  
+  </div>
+</form>

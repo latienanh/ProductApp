@@ -45,9 +45,9 @@
             <div class="d-none" id="table-province-actions">
               <div class="d-flex"><select class="form-select form-select-sm" aria-label="Bulk actions " [formControl]="bulkActionControl">
                   <option value="" selected="">Bulk actions</option>
-                  <option value="Refund">Refund</option>
+          
                   <option value="Delete">Delete</option>
-                  <option value="Archive">Archive</option>
+            
                 </select><button class="btn btn-falcon-default btn-sm ms-2" type="button" (click)="bulkProvince()">Apply</button></div>
             </div>
             <div class="d-flex align-items-center " id="table-province-replace-element">
@@ -55,21 +55,7 @@
               <button class="btn btn-falcon-default btn-sm mx-2" type="button" (click)="showAddProvince()"><span
                   class="fas fa-plus" data-fa-transform="shrink-3"></span><span
                   class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Thêm tỉnh</span></button>
-              <div class="dropdown font-sans-serif ms-2"><button
-                  class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none" type="button"
-                  id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true"
-                  aria-expanded="false"><svg class="svg-inline--fa fa-ellipsis-h fa-w-16 fs-11" aria-hidden="true"
-                    focusable="false" data-prefix="fas" data-icon="ellipsis-h" role="img"
-                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                    <path fill="currentColor"
-                      d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z">
-                    </path>
-                  </svg><!-- <span class="fas fa-ellipsis-h fs-11"></span> Font Awesome fontawesome.com --></button>
-                <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="preview-dropdown"><a
-                    class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
-                </div>
-              </div>
+           
             </div>
           </div>
         </div>

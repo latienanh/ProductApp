@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { WardResponse } from '../../models/ward/ward-response.model';
-import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { WardService } from '../../services/ward.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProvinceService } from '../../services/province.service';
-import { GetAllDistrictResponse } from '../../models/district/get-all-district-response.model';
+import { DistrictResponse } from '../../models/district/district-response.model';
+import { ProvinceResponse } from '../../models/province/province-response.model';
+import { WardResponse } from '../../models/ward/ward-response.model';
 import { DistrictService } from '../../services/district.service';
+import { ProvinceService } from '../../services/province.service';
+import { WardService } from '../../services/ward.service';
+import { GetListProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { getListDistrictResponse } from '../../models/district/get-list-district-response.model';
 
 @Component({
   selector: 'app-ward',
@@ -15,8 +17,8 @@ import { DistrictService } from '../../services/district.service';
 })
 export class WardComponent {
   wards: WardResponse[] = [];
-  allProvince: GetAllProvinceResponse[] = [];
-  allDistrict: GetAllDistrictResponse[] = [];
+  allProvince: ProvinceResponse[] = [];
+  allDistrict: DistrictResponse[] = [];
   currentPage = 1;
   maxPage = 0;
   pageSize = 2;
@@ -62,8 +64,8 @@ export class WardComponent {
     this.provinceService
       .getAll()
       .subscribe({
-        next: (data) => {
-         this.allProvince = [...data]
+        next: (data:GetListProvinceResponse) => {
+         this.allProvince = [...data.items]
       
         },
         error: (error) => {
@@ -77,8 +79,9 @@ export class WardComponent {
     this.districtService
       .getAll(provinceValue)
       .subscribe({
-        next: (data) => {
-         this.allDistrict = [...data]
+        next: (data:getListDistrictResponse) => {
+          console.log(data)
+         this.allDistrict = [...data.items]
          console.log(this.allDistrict)
      
         },
@@ -160,9 +163,9 @@ export class WardComponent {
     this.loadWards(this.searchForm.value.nameSearch,this.searchForm.value.codeProvinceSelect,this.searchForm.value.codeDistrictSelect);
   }
   toggleActionVisibility() {
-    const actionElement = document.getElementById('table-Ward-actions');
+    const actionElement = document.getElementById('table-ward-actions');
     const replaceElement = document.getElementById(
-      'table-Ward-replace-element'
+      'table-ward-replace-element'
     );
 
     if (this.wards.some((x) => x.checked)) {

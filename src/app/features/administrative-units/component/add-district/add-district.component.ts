@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DistrictService } from '../../services/district.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProvinceResponse } from '../../models/province/province-response.model';
+import { DistrictService } from '../../services/district.service';
 import { ProvinceService } from '../../services/province.service';
-import { GetAllProvinceResponse } from '../../models/province/get-all-province-response.model';
+import { GetListProvinceResponse } from '../../models/province/get-all-province-response.model';
 
 @Component({
   selector: 'app-add-district',
@@ -12,7 +13,7 @@ import { GetAllProvinceResponse } from '../../models/province/get-all-province-r
 })
 export class AddDistrictComponent implements OnInit {
   districtForm: FormGroup;
-  allProvince: GetAllProvinceResponse[] =[];
+  allProvince: ProvinceResponse[] =[];
   constructor(
     private fb: FormBuilder,
     private districtService: DistrictService,
@@ -65,8 +66,8 @@ export class AddDistrictComponent implements OnInit {
     this.provinceService
       .getAll()
       .subscribe({
-        next: (data) => {
-         this.allProvince = [...data]
+        next: (data:GetListProvinceResponse) => {
+         this.allProvince = [...data.items]
          console.log(this.allProvince)
         },
         error: (error) => {

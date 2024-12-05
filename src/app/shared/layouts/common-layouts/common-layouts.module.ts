@@ -8,6 +8,7 @@ import { DefaultWrapComponent } from './default-wrap/default-wrap.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    CommonLayoutsRoutingModule
+    CommonLayoutsRoutingModule,
+    FormsModule
   ],
   exports:[
     FooterComponent,
