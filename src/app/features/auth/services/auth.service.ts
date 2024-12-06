@@ -30,32 +30,28 @@ export class AuthService {
   }
 
   getAccessToken(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('access-token');
-    } else {
-      return null;
-    }
+    return localStorage.getItem('access-token');
   }
   setAccessToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('access-token', token);
     }
   }
-  refreshToken(): Observable<string> {
-    if (isPlatformBrowser(this.platformId)) {
-      const refreshToken = localStorage.getItem('refresh-token');
-      if (refreshToken) {
-        const body = new HttpParams().set('refreshToken', refreshToken);
-        return this.http
-          .post<{ accessToken: string }>(`${this.apiURL}/refresh`, body)
-          .pipe(map((response) => response.accessToken));
-      } else {
-        return throwError(() => new Error('No refresh token available'));
-      }
-    } else {
-      return throwError(() => new Error('LocalStorage is not available'));
-    }
-  }
+  // refreshToken(): Observable<string> {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     const refreshToken = localStorage.getItem('refresh-token');
+  //     if (refreshToken) {
+  //       const body = new HttpParams().set('refreshToken', refreshToken);
+  //       return this.http
+  //         .post<{ accessToken: string }>(`${this.apiURL}/refresh`, body)
+  //         .pipe(map((response) => response.accessToken));
+  //     } else {
+  //       return throwError(() => new Error('No refresh token available'));
+  //     }
+  //   } else {
+  //     return throwError(() => new Error('LocalStorage is not available'));
+  //   }
+  // }
   isLoggedIn(): boolean {
     return this.getAccessToken() != null;
   }
@@ -66,12 +62,9 @@ export class AuthService {
     return result;
   }
   removeItemLocalStorage(key: string): void {
-
-      localStorage.removeItem(key); // Remove item from localStorage
-  
+    localStorage.removeItem(key); // Remove item from localStorage
   }
-  isLoading()
-  {
-      return !isPlatformBrowser(this.platformId)
+  isLoading() {
+    return !isPlatformBrowser(this.platformId);
   }
 }
