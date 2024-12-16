@@ -4,30 +4,31 @@ import { map, Observable, throwError } from 'rxjs';
 import { LoginRequest } from '../models/auth-request.model.ts/login-request.model';
 import { LoginResponse } from '../models/auth-response.model.ts/login-response.model';
 import { isPlatformBrowser } from '@angular/common';
+import {environment} from "../../../../environments/environment";
+import {ResponseWithDataModel} from "../../../core/models/reponse-with-data.model";
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiURL = 'http://test.nghiencuukhoahoc.com.vn/api/app/account';
+  private apiURL = environment.apiUrl;
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
-  login(loginRequest: LoginRequest): Observable<LoginResponse> {
+
+  login(loginRequest: LoginRequest): Observable<ResponseWithDataModel<LoginResponse>> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
     });
-    const body = new HttpParams()
-      .set('userName', loginRequest.userName)
-      .set('password', loginRequest.password);
-    var result = this.http.post<LoginResponse>(
-      `${this.apiURL}/login`,
-      body.toString(),
-      { headers }
-    );
-    return result;
+
+    const body = JSON.stringify(loginRequest);
+
+    return this.http.post<ResponseWithDataModel<LoginResponse>>(`${this.apiURL}/Auth/Login`, body, { headers });
   }
+
 
   getAccessToken(): string | null {
     return localStorage.getItem('access-token');
