@@ -17,5 +17,9 @@ export const BACKEND_LAYOUT: Routes = [
     {
         path:'administrative-units',
         loadChildren:()=>import('../../features/administrative-units/administrative-units.module').then(m=>m.AdministrativeUnitsModule)
+    },
+    {
+        path:'group-product',
+        loadChildren:()=>import('../../features/group-product/group-product.module').then(m=>m.GroupProductModule)
     }
 ]

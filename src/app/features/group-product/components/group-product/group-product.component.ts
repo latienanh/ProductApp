@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductResponseModel } from '../../models/product-response.model';
-import { ProductService } from '../../services/product.service';
-import { ResponseWithListDataModel } from '../../../../core/models/response-with-listdata.model';
 import { ResponseWithDataModel } from '../../../../core/models/reponse-with-data.model';
+import { ResponseWithListDataModel } from '../../../../core/models/response-with-listdata.model';
+import { GroupProductResponseModel } from '../../models/group-product-response.model';
+import { GroupProductService } from '../../services/group-product.service';
 
 @Component({
   selector: 'app-group-product',
@@ -12,14 +12,14 @@ import { ResponseWithDataModel } from '../../../../core/models/reponse-with-data
   styleUrl: './group-product.component.scss',
 })
 export class GroupProductComponent implements OnInit {
-  products: ProductResponseModel[] = [];
+  groupProducts: GroupProductResponseModel[] = [];
   currentPage = 1;
   maxPage = 0;
   pageSize = 1;
   searchForm: FormGroup;
   bulkActionControl: FormControl;
   constructor(
-    private productService: ProductService,
+    private groupProductService: GroupProductService,
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder
@@ -31,31 +31,31 @@ export class GroupProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadGroupProduct();
   }
 
-  loadProducts(searchName?: string): void {
-    this.productService
+  loadGroupProduct(searchName?: string): void {
+    this.groupProductService
       .getPaging(this.currentPage-1, this.pageSize, searchName)
       .subscribe({
-        next: (data: ResponseWithListDataModel<ProductResponseModel>) => {
+        next: (data: ResponseWithListDataModel<GroupProductResponseModel>) => {
           console.log(data)
-          this.products = data.listData.data;
-          this.products.map((x) => (x.checked = false));
+          this.groupProducts = data.listData.data;
+          this.groupProducts.map((x) => (x.checked = false));
           this.maxPage = data.listData.totalPage;
           this.toggleActionVisibility();
         },
         error: (error) => {
-          console.error('Error fetching Products', error);
+          console.error('Error fetching groupProduct', error);
         },
       });
   }
 
-  showAddProduct(): void {
+  showAddGroupProduct(): void {
     this.router.navigate(['add'], { relativeTo: this.route });
   }
 
-  showUpdateProduct(id: string): void {
+  showUpdateGroupProduct(id: string): void {
     const params = {
       id: id,
     };
@@ -65,12 +65,12 @@ export class GroupProductComponent implements OnInit {
     });
   }
 
-  // removeProduct(id: number): void {
-  //   this.ProductService.deleteProduct(id).subscribe({
+  // removeGroupProduct(id: number): void {
+  //   this.groupProductervice.deleteGroupProduct(id).subscribe({
   //     next: (response) => {
   //       if (response.isSuccessful) {
   //         alert('Xoá thành công');
-  //         this.loadProducts();
+  //         this.loadgroupProduct();
   //       } else {
   //         alert('Xoá không thành công');
   //       }
@@ -80,12 +80,12 @@ export class GroupProductComponent implements OnInit {
   //     },
   //   });
   // }
-  bulkProduct(): void {
+  bulkGroupProduct(): void {
     if (this.bulkActionControl.value === 'Delete') {
       let check = 0;
-      this.products.forEach((Product) => {
-        if (Product.checked) {
-          this.productService.delete(Product.id).subscribe({
+      this.groupProducts.forEach((GroupProduct) => {
+        if (GroupProduct.checked) {
+          this.groupProductService.delete(GroupProduct.id).subscribe({
             next: (response:ResponseWithDataModel<string>) => {
               if (!response.data) {
                 check++;
@@ -100,7 +100,7 @@ export class GroupProductComponent implements OnInit {
       });
       if (check == 0) {
         alert('Xoá hàng loạt thành công');
-        this.loadProducts();
+        this.loadGroupProduct();
       } else {
         alert(`Xoá hàng loạt thất bại ${check} `);
       }
@@ -108,19 +108,19 @@ export class GroupProductComponent implements OnInit {
   }
   handlePageChange(page: number): void {
     this.currentPage = page;
-    this.loadProducts(this.searchForm.value.nameSearch);
+    this.loadGroupProduct(this.searchForm.value.nameSearch);
   }
   searchByName() {
     this.currentPage = 1;
-    this.loadProducts(this.searchForm.value.nameSearch);
+    this.loadGroupProduct(this.searchForm.value.nameSearch);
   }
   toggleActionVisibility() {
-    const actionElement = document.getElementById('table-Product-actions');
+    const actionElement = document.getElementById('table-GroupProduct-actions');
     const replaceElement = document.getElementById(
-      'table-Product-replace-element'
+      'table-GroupProduct-replace-element'
     );
 
-    if (this.products.some((x) => x.checked)) {
+    if (this.groupProducts.some((x) => x.checked)) {
       actionElement?.classList.remove('d-none');
       replaceElement?.classList.add('d-none');
     } else {
@@ -130,26 +130,26 @@ export class GroupProductComponent implements OnInit {
   }
   // Getter cho checkbox "Select All"
   get allChecked() {
-    return this.products.every((item) => item.checked);
+    return this.groupProducts.every((item) => item.checked);
   }
 
   // Getter cho trạng thái "indeterminate"
   get indeterminate() {
-    return this.products.some((item) => item.checked) && !this.allChecked;
+    return this.groupProducts.some((item) => item.checked) && !this.allChecked;
   }
 
   // Thiết lập trạng thái cho tất cả checkbox con khi "Select All" thay đổi
   setAll(event: any) {
     const isChecked = event.target.checked;
 
-    this.products.forEach((item) => (item.checked = isChecked));
+    this.groupProducts.forEach((item) => (item.checked = isChecked));
 
     this.toggleActionVisibility();
   }
 
   // Cập nhật trạng thái khi một checkbox con thay đổi
   updateSingleCheckbox(index: number, id: string) {
-    const item = this.products[index];
+    const item = this.groupProducts[index];
     item.checked = !item.checked;
     this.toggleActionVisibility();
   }

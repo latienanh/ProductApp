@@ -73,6 +73,27 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#groupProduct" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="e-commerce">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">GroupProduct</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+          <ul class="nav collapse" id="groupProduct">
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/group-product']">
+                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Group Product List</span>
+                </div>
+              </a>
+              <!-- more inner pages-->
+            </li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/backend/group-product/add']">
+                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Group Product List</span>
+                </div>
+              </a>
+              <!-- more inner pages-->
+            </li>
+          </ul>
+        </li>
           <li class="nav-item tienanh"><a class="nav-link dropdown-indicator collapsed" href="#level-three"
               data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
               <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Địa chỉ hành chính</span></div>
