@@ -1,5 +1,5 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
@@ -25,9 +25,9 @@ export class AuthInterceptor implements HttpInterceptor {
     const clonedReq = req.clone({ setHeaders: headersConfig });
 
     return next.handle(clonedReq).pipe(
-      catchError((error: any) => {
-        console.error('Error:', error);
-        return throwError(() => new Error(error.message));
+      catchError((error: HttpErrorResponse) => {
+        console.error('Lỗi:', error);
+        return throwError(() => error.error);
       })
     );
   }

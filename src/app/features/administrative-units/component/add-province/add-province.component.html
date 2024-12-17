@@ -18,36 +18,24 @@
         <div class="card-body">
           <div class="row gx-2">
             <div class="col-6 mb-3">
-              <app-form-input 
-              [control]="getFormControl('maTinh')"
-              label="Mã Tỉnh:" 
-              id="province-name"
-              [errors]="{
+              <app-form-input [control]="getFormControl('maTinh')" label="Mã Tỉnh:" id="province-name" [errors]="{
                 required: 'Mã tỉnh là bắt buộc.',
                 minlength: 'Mã tỉnh phải có ít nhất 3 ký tự.',
                 maxlength: 'Mã tỉnh không được vượt quá 10 ký tự.'
-              }">
-            </app-form-input>
+              }" [showErrors]="submitted">
+              </app-form-input>
             </div>
             <div class="col-6 mb-3">
-              <app-form-input 
-              [control]="getFormControl('tenTinh')"
-              label="Tên tỉnh:" 
-              id="province-ten"
-              [errors]="{
+              <app-form-input [control]="getFormControl('tenTinh')" label="Tên tỉnh:" id="province-ten" [errors]="{
                 required: 'Tên tỉnh là bắt buộc.',
-              }">
-            </app-form-input>
+              }" [showErrors]="submitted">
+              </app-form-input>
             </div>
             <div class="col-6 mb-3">
-              <app-form-input 
-              [control]="getFormControl('cap')"
-              label="Cấp:" 
-              id="province-cap"
-              [errors]="{
+              <app-form-input [control]="getFormControl('cap')" label="Cấp:" id="province-cap" [errors]="{
                 required: 'Cấp là bắt buộc.',
-              }">
-            </app-form-input>
+              }" [showErrors]="submitted">
+              </app-form-input>
             </div>
           </div>
         </div>
@@ -61,7 +49,8 @@
           <h5 class="mb-2 mb-md-0">You're almost done!</h5>
         </div>
         <div class="col-auto">
-          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button" [routerLink]="['..']">Discard</button>
+          <button class="btn btn-link text-secondary p-0 me-3 fw-medium" type="button"
+            [routerLink]="['..']">Discard</button>
           <button class="btn btn-primary" type="submit">Add province</button>
         </div>
       </div>

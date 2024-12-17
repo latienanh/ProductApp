@@ -10,6 +10,7 @@ import { ProvinceService } from '../../services/province.service';
 })
 export class AddProvinceComponent implements OnInit {
   provinceForm: FormGroup;
+  submitted = false;
   constructor(
     private fb: FormBuilder,
     private provinceService: ProvinceService,
@@ -30,6 +31,7 @@ export class AddProvinceComponent implements OnInit {
   getFormControl(name: string): FormControl { return this.provinceForm.get(name) as FormControl; }
 
   addProvince(): void {
+    this.submitted = true;
     if (this.provinceForm.valid) {
       const newProvince = {
         ...this.provinceForm.value,

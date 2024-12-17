@@ -4,11 +4,11 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss'
+  selector: 'app-add-group-product',
+  templateUrl: './add-group-product.component.html',
+  styleUrl: './add-group-product.component.scss'
 })
-export class AddProductComponent {
+export class AddGroupProductComponent {
   productForm: FormGroup;
   constructor(
     private fb: FormBuilder,

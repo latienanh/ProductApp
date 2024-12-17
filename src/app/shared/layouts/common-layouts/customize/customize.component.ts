@@ -7,7 +7,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 })
 export class CustomizeComponent implements OnInit,AfterViewInit {
   isFluid: boolean = false;
-  selectedStyle: string = 'transparent'; // Mặc định là transparent
+  selectedStyle: string = ''; // Mặc định là transparent
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
@@ -15,7 +15,12 @@ export class CustomizeComponent implements OnInit,AfterViewInit {
       const savedIsFluid = JSON.parse(
         localStorage.getItem('isFluid') || 'false'
       );
+      const savedSelectedStyle = JSON.parse(
+        localStorage.getItem('navbarStyle') || 'transparent'
+      );
+      console.log(savedSelectedStyle)
       this.isFluid = savedIsFluid;
+      this.selectedStyle = savedSelectedStyle;
     }
   }
   ngAfterViewInit(): void {
@@ -52,11 +57,12 @@ export class CustomizeComponent implements OnInit,AfterViewInit {
   }
   onStyleChange(): void {
     // Hàm được gọi khi người dùng thay đổi lựa chọn
-    // console.log('Selected navbar style:', this.selectedStyle);
+    localStorage.setItem('navbarStyle', this.selectedStyle);
     this.changeNavbarStyle(this.selectedStyle);
   }
   changeNavbarStyle(style: string): void {
     const navbar = document.querySelector('.navbar'); // Giả sử bạn có navbar với class .navbar
+
     if (navbar) {
       // Xóa tất cả các class style trước đó
       navbar.classList.remove('navbar-transparent', 'navbar-inverted', 'navbar-card', 'navbar-vibrant');

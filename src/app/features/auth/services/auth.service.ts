@@ -6,6 +6,7 @@ import { LoginResponse } from '../models/auth-response.model.ts/login-response.m
 import { isPlatformBrowser } from '@angular/common';
 import {environment} from "../../../../environments/environment";
 import {ResponseWithDataModel} from "../../../core/models/reponse-with-data.model";
+import { LocalStorageService } from '../../../core/services/local-storage.service';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthService {
   private apiURL = environment.apiUrl;
   constructor(
     private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private localStorageService : LocalStorageService
   ) {}
 
   login(loginRequest: LoginRequest): Observable<ResponseWithDataModel<LoginResponse>> {
@@ -28,15 +29,11 @@ export class AuthService {
 
     return this.http.post<ResponseWithDataModel<LoginResponse>>(`${this.apiURL}/Auth/Login`, body, { headers });
   }
-
-
   getAccessToken(): string | null {
-    return localStorage.getItem('access-token');
+    return this.localStorageService.getItemLocalStorage('access-token')
   }
   setAccessToken(token: string): void {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('access-token', token);
-    }
+    this.localStorageService.setItemLocalStorage('access-token',token)
   }
   // refreshToken(): Observable<string> {
   //   if (isPlatformBrowser(this.platformId)) {
@@ -56,16 +53,13 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getAccessToken() != null;
   }
-  logout(): Observable<LoginResponse> {
-    const result = this.http.post<LoginResponse>(`${this.apiURL}/logout`, {});
-    this.removeItemLocalStorage('access-token');
-    this.removeItemLocalStorage('refresh-token');
-    return result;
+  logout() {
+    // const result = this.http.post<LoginResponse>(`${this.apiURL}/logout`, {});
+    this.localStorageService.removeItemLocalStorage('access-token');
+    this.localStorageService.removeItemLocalStorage('refresh-token');
   }
-  removeItemLocalStorage(key: string): void {
-    localStorage.removeItem(key); // Remove item from localStorage
-  }
+  
   isLoading() {
-    return !isPlatformBrowser(this.platformId);
+    return !this.localStorageService.isCheckPlatformBrowser();
   }
 }
